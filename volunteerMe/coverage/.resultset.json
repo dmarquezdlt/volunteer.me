@@ -34,6 +34,7 @@
         1,
         null,
         null,
+        null,
         null
       ],
       "/Users/apprentice/Desktop/volunteer.me/volunteerMe/app/models/organization.rb": [
@@ -42,9 +43,13 @@
       ],
       "/Users/apprentice/Desktop/volunteer.me/volunteerMe/app/models/volunteer.rb": [
         1,
+        1,
+        1,
+        1,
+        null,
         null
       ]
     },
-    "timestamp": 1427482095
+    "timestamp": 1427484537
   }
 }
