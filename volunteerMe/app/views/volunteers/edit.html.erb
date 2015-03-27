@@ -1,0 +1,7 @@
+<%= form_for Volunteer.new, url: {action: "update"}, html: {class:"Volunteer"} do |f| %>
+<%= f.text_field :name %>
+<%= f.text_field :email %>
+<%= f.submit "Edit" %>
+<% end %>
+
+
