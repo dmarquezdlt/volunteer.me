@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20150327222149) do
 
   create_table "organizations", force: true do |t|
     t.string   "name"
-    t.string   "type"
+    t.string   "category"
     t.string   "email"
     t.string   "phone"
     t.string   "website"
