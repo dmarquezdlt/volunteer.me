@@ -11,3 +11,4 @@
     email: Faker::Internet.email
     )
 end
+
