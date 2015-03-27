@@ -5,7 +5,7 @@ class VolunteersController < ApplicationController
   end
 
   def show
-
+    @volunteer = Volunteer.find(params[:id])
   end
 
 end
