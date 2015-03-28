@@ -1,7 +1,7 @@
 class VolunteersController < ApplicationController
 
   def index
-    @volunteers = Volunteer.all
+    @events = Event.all
   end
 
   def show
