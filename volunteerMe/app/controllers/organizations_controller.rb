@@ -1,17 +1,29 @@
 class OrganizationsController < ApplicationController
 
-  def index
-   @organization = Organization.all
-  end
+  # def index
+  #  @organization = Organization.all
+  # end
 
   def show
     @org = Organization.find(params[:id])
   end
 
-   def update
-    @org.update_attributes(org_params)
+  def edit
+    @org = Organization.find(params[:id])
+  end
 
-    redirect_to @organization
+   def update
+    @org = Organization.find(params[:id])
+    p "___________________________"
+    p @org
+    p "___________________________"
+    p organization_params
+
+
+    if @org.update(organization_params)
+      redirect_to @org
+    end
+
   end
 
    def destroy
@@ -23,7 +35,7 @@ class OrganizationsController < ApplicationController
 
   private
   def organization_params
-    params.require(:organization).permit(:name, :id, :email)
+    params.require(:organization).permit(:name, :id, :email, :category, :bio, :website, :phone, :address, :city, :state)
   end
 
 end
