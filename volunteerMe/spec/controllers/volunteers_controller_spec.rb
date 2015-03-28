@@ -7,6 +7,7 @@ RSpec.describe VolunteersController, type: :controller do
     {
       name: "Volunteer 1",
       email: "volu@teer.org",
+      password: "12345678"
     }
   }
 
