@@ -1,7 +1,7 @@
 class OrganizationsController < ApplicationController
 
   def index
-   @organization = Organization.all
+   render 'volunteers/index'
   end
 
   def show
