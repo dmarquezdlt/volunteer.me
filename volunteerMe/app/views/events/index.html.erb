@@ -1,5 +1,9 @@
+SEARCH BAR HERE
+
 <% @events.each do |event| %>
 <ul>
-  <li><%= event.name %></li>
+  <li><%= link_to event.name, event_path(event) %> | with: <%= event.organization.name %> </li>
 </ul>
 <% end %>
+
+
