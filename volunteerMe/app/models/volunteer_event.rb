@@ -1,4 +1,4 @@
-class Volunteer_Event < ActiveRecord::Base
+class VolunteerEvent < ActiveRecord::Base
   belongs_to :volunteer
   belongs_to :event
 end
