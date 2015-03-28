@@ -1,15 +1,30 @@
-ORG PROFILE PAGE
- <%= current_organization.id %>
-<% if organization_signed_in?%>
-you are an org
-<%= link_to 'Make a Profile', edit_organization_path(@org.id) %>
-<% end %>
+<div>
+
+  <div>
+    <% if organization_signed_in?%>
+      <% if current_organization.id == @org.id %>
+
+        <% if  @org.name == nil  %>
+          <div><%= link_to 'Create a Profile', edit_organization_path(@org.id) %> to post your volunteering opportunities.<div>
+        <% else %>
+          <% if organization_signed_in?%>
+            <div>
+              <p>Welcome, <%= @org.name %></p>
+              <%= link_to 'Edit Profile', edit_organization_path(@org.id) %>
+              <%= link_to 'Create Event', new_organization_event_path(@org.id) %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+     <% end %>
+</div>
+
 <div>
 <p> <%= @org.name %> </p>
 <p> Category: <%= @org.category %> </p>
 <p> Bio: <%= @org.bio %> </p>
 <p> Phone: <%= @org.phone %> </p>
-<p> Website: <%= @org.website %> </p>
+<p> <a href="<%= @org.website %>">Visit Website </a> </p>
 <p> Address <%= @org.address %>, <%= @org.city %>, <%= @org.state %> </p>
 </div>
 
@@ -33,3 +48,12 @@ you are an org
   </ul>
 
 </div>
+</div>
+<% if organization_signed_in?%>
+  <% if current_organization.id == @org.id %>
+    <%= link_to 'Delete Account', organization_path(@org.id), method: :delete %>
+  <% end %>
+<% end %>
+
+
+
