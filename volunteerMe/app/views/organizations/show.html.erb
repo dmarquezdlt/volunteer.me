@@ -1,8 +1,35 @@
-Org profile page
+ORG PROFILE PAGE
+ <%= current_organization.id %>
+<% if organization_signed_in?%>
+you are an org
+<%= link_to 'Edit Profile', edit_organization_path(@org.id) %>
+<% end %>
 <div>
 <p> <%= @org.name %> </p>
-<p> <%= @org.website %> </p>
-<p> <%= @org.address %> </p>
-<p> <%= @org.city %> </p>
-<p> <%= @org.state %> </p>
+<p> Category: <%= @org.category %> </p>
+<p> Bio: <%= @org.bio %> </p>
+<p> Phone: <%= @org.phone %> </p>
+<p> Website: <%= @org.website %> </p>
+<p> Address <%= @org.address %>, <%= @org.city %>, <%= @org.state %> </p>
+</div>
+
+<h3>Upcoming Events</h3>
+
+<div>
+  <ul>
+    <% @org.events.each do |event| %>
+      <li>
+        Event: <%= event.name %> |
+        <%= event.description %>,
+        REQUIREMENTS: <%= event.requirements %> ,
+        Commitment: <%= event.commitment_type %> ,
+        Date: <%= event.date %> ,
+        Starts: <%= event.time_start.strftime("%r") %> ,
+        Ends: <%= event.time_end.strftime("%r") %> ,
+        Address: <%= event.address %>, <%= event.city %>, <%= event.state %>
+        # of spots: <%= event.spots %>
+      </li>
+      <% end %>
+  </ul>
+
 </div>
