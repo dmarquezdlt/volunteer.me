@@ -5,6 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
 20.times do
   Volunteer.create!(
     name: Faker::Name.name,
@@ -13,12 +14,21 @@
     )
 
 end
+
+# 20.times do
+#   Volunteer.create!(
+#     name: Faker::Name.name,
+#     email: Faker::Internet.email
+#     )
+# end
+
 commitment_type = ["one-time", "weekly", "monthly", "mentorship", "pro-bono", "workshop", "other"]
 20.times do
   org = Organization.create!(
-    name: Faker::Name.name,
-    category: Faker::Lorem.word,
+    name: Faker::Company.name,
+    category: Faker::Commerce.department,
     email: Faker::Internet.email,
+    password: "password",
     phone: Faker::PhoneNumber.cell_phone,
     website: Faker::Internet.url,
     bio: Faker::Lorem.sentence(3),
@@ -26,13 +36,12 @@ commitment_type = ["one-time", "weekly", "monthly", "mentorship", "pro-bono", "w
     city: Faker::Address.city,
     state: Faker::Address.state_abbr,
     country: Faker::Address.country,
-    password: 'password'
     )
   3.times do
     event = Event.create!(
-      name: Faker::Name.name,
-      description: Faker::Lorem.sentence,
-      requirements: Faker::Lorem.sentence,
+      name: Faker::App.name,
+      description: Faker::Hacker.say_something_smart,
+      requirements: Faker::Hacker.verb,
       commitment_type: commitment_type.sample,
       date: Faker::Date.backward(2),
       time_start: Time.now,

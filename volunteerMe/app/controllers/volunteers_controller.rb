@@ -8,10 +8,19 @@ class VolunteersController < ApplicationController
     @volunteer = Volunteer.find(params[:id])
   end
 
-  def update
-    @volunteer.update_attributes(user_params)
+  def edit
+    @volunteer = Volunteer.find(params[:id])
+  end
 
-    redirect_to @volunteer
+  def update
+     @volunteer = Volunteer.find(params[:id])
+
+      if @volunteer.update(volunteer_params)
+        redirect_to @volunteer
+      else
+        render 'edit'
+      end
+
   end
 
   def destroy
@@ -20,5 +29,11 @@ class VolunteersController < ApplicationController
 
     redirect_to volunteers_path
   end
+
+
+  private
+    def volunteer_params
+      params.require(:volunteer).permit(:name, :email)
+    end
 
 end
