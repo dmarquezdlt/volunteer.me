@@ -1,0 +1,4 @@
+Hello
+<%= @event.name %> <br>
+<%= link_to 'Edit Event', edit_organization_event_path(@org, @event) %>
+<%= link_to 'Delete Event', organization_event_path(@org, @event), method: :delete %>
