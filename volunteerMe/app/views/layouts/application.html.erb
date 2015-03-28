@@ -5,19 +5,75 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+   <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Volunteer.me</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+      <ul class="nav navbar-nav navbar-right">
+        <% unless volunteer_signed_in? || organization_signed_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Sign in <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/user/sign_in">As a Volunteer</a></li>
+              <li><a href="/org/sign_in">As a Organization</a></li>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+
+        <% if volunteer_signed_in? %>
+            <li><%= link_to('Logout', destroy_volunteer_session_path) %></li>
+        <% elsif organization_signed_in? %>
+            <li><%= link_to('Logout', destroy_organization_session_path) %></li>
+        <% end %>
+
+        <% unless volunteer_signed_in? || organization_signed_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Sign up <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/user/sign_up">As a Volunteer</a></li>
+              <li><a href="/org/sign_up">As a Organization</a></li>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<%= yield %>
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
-<% if volunteer_signed_in? %>
-  <%= link_to('Logout', destroy_volunteer_session_path) %>
-<% elsif organization_signed_in? %>
-  <%= link_to('Logout', destroy_organization_session_path) %>
-<% end %>
-
-<%= yield %>
-
 </body>
 </html>
+
+
+
