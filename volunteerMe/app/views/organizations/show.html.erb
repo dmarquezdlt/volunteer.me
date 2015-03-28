@@ -1,17 +1,20 @@
 <div>
+
   <div>
-  <% if @org.name.empty? %>
-    <% if organization_signed_in?%>
-    <div><%= link_to 'Create a Profile', edit_organization_path(@org.id) %> to post your volunteering opportunities.<div>
-    <% end %>
-  <% else %>
-    <% if organization_signed_in?%>
-      <div>
-        <h3>Welcome, <%= @org.name %></h3>
-        <%= link_to 'Edit Profile', edit_organization_path(@org.id) %>
-        <div>
+    <% if current_organization.name == @org.name %>
+    <% if @org.name.empty? %>
+      <% if organization_signed_in?%>
+      <div><%= link_to 'Create a Profile', edit_organization_path(@org.id) %> to post your volunteering opportunities.<div>
       <% end %>
-    <% end %>
+    <% else %>
+      <% if organization_signed_in?%>
+        <div>
+          <p>Welcome, <%= @org.name %></p>
+          <%= link_to 'Edit Profile', edit_organization_path(@org.id) %>
+          <div>
+        <% end %>
+      <% end %>
+      <% end %>
 </div>
 
 <div>
