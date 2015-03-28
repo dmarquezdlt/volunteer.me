@@ -3,6 +3,7 @@ ORG PROFILE PAGE
 <% if organization_signed_in?%>
 you are an org
 <%= link_to 'Make a Profile', edit_organization_path(@org.id) %>
+<%= link_to 'Create an Event', new_organization_event_path(@org) %>
 <% end %>
 <div>
 <p> <%= @org.name %> </p>
@@ -19,7 +20,7 @@ you are an org
   <ul>
     <% @org.events.each do |event| %>
       <li>
-        Event: <%= event.name %> |
+        Event: <%= link_to event.name, organization_event_path(@org, event) %> |
         <%= event.description %>,
         REQUIREMENTS: <%= event.requirements %> ,
         Commitment: <%= event.commitment_type %> ,
@@ -28,6 +29,7 @@ you are an org
         Ends: <%= event.time_end.strftime("%r") %> ,
         Address: <%= event.address %>, <%= event.city %>, <%= event.state %>
         # of spots: <%= event.spots %>
+
       </li>
       <% end %>
   </ul>
