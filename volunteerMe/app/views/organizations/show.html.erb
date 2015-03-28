@@ -1,9 +1,19 @@
-ORG PROFILE PAGE
- <%= current_organization.id %>
-<% if organization_signed_in?%>
-you are an org
-<%= link_to 'Make a Profile', edit_organization_path(@org.id) %>
-<% end %>
+<div>
+  <div>
+  <% if @org.name.empty? %>
+    <% if organization_signed_in?%>
+    <div><%= link_to 'Create a Profile', edit_organization_path(@org.id) %> to post your volunteering opportunities.<div>
+    <% end %>
+  <% else %>
+    <% if organization_signed_in?%>
+      <div>
+        <h3>Welcome, <%= @org.name %></h3>
+        <%= link_to 'Edit Profile', edit_organization_path(@org.id) %>
+        <div>
+      <% end %>
+    <% end %>
+</div>
+
 <div>
 <p> <%= @org.name %> </p>
 <p> Category: <%= @org.category %> </p>
@@ -32,4 +42,5 @@ you are an org
       <% end %>
   </ul>
 
+</div>
 </div>
