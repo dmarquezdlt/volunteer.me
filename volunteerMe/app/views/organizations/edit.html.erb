@@ -1,0 +1,50 @@
+EDIT ORG PAGE
+<%= @org.id %>
+
+<h1>Create Your Organization's Profile</h1>
+
+<%= form_for :organization, url: organization_path(@org), method: :patch do |f| %>
+
+  <p>
+    <%= f.label :Organization_Name %><br>
+    <%= f.text_field :name %>
+   </p>
+
+  <p>
+    <%= f.label :category %><br>
+    <%= f.select :category, ['Animals', 'Environmental', 'Health', 'Education', 'Art&Culture', 'Social Services', 'Advocacy', 'Other'] %>
+  </p>
+
+  <p>
+    <%= f.label :Mission_Statement %><br>
+    <%= f.text_area :bio,  :cols => "50", :rows => "9" %>
+   </p>
+  <p>
+    <%= f.label :Website %><br>
+    <%= f.text_field :website %>
+   </p>
+
+    <p>
+    <%= f.label :Phone %><br>
+    <%= f.text_field :phone %>
+   </p>
+
+   <p>
+    <%= f.label :Address %><br>
+    <%= f.text_field :address %>
+   </p>
+    <p>
+    <%= f.label :City %><br>
+    <%= f.text_field :city %>
+
+    <%= f.select :state,  state_array %>
+   </p>
+
+
+  <p>
+    <%= f.submit "Submit" %>
+  </p>
+
+<% end %>
+
+<%= link_to 'Back', volunteer_path %>
