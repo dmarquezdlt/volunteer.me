@@ -52,6 +52,7 @@
 
         <% if volunteer_signed_in? %>
             <li><%= link_to('Logout', destroy_volunteer_session_path) %></li>
+            <li><%= link_to('Search', root_path) %></li>
         <% elsif organization_signed_in? %>
             <li><%= link_to('Logout', destroy_organization_session_path) %></li>
         <% end %>
