@@ -1,49 +1,97 @@
-EDIT ORG PAGE
-<%= @org.id %>
+<% if @org.name == nil %>
 
-<h1>Create Your Organization's Profile</h1>
+  <h1>Create Your Organization's Profile</h1>
 
-<%= form_for :organization, url: organization_path(@org), method: :patch do |f| %>
-
-  <p>
-    <%= f.label :Organization_Name %><br>
-    <%= f.text_field :name %>
-   </p>
-
-  <p>
-    <%= f.label :category %><br>
-    <%= f.select :category, ['Animals', 'Environmental', 'Health', 'Education', 'Art&Culture', 'Social Services', 'Advocacy', 'Other'] %>
-  </p>
-
-  <p>
-    <%= f.label :Mission_Statement %><br>
-    <%= f.text_area :bio,  :cols => "50", :rows => "9" %>
-   </p>
-  <p>
-    <%= f.label :Website %><br>
-    <%= f.text_field :website %>
-   </p>
+  <%= form_for :organization, url: organization_path(@org), method: :patch do |f| %>
 
     <p>
-    <%= f.label :Phone %><br>
-    <%= f.text_field :phone %>
-   </p>
+      <%= f.label :Organization_Name %><br>
+      <%= f.text_field :name, required: true %>
+    </p>
 
-   <p>
-    <%= f.label :Address %><br>
-    <%= f.text_field :address %>
-   </p>
     <p>
-    <%= f.label :City %><br>
-    <%= f.text_field :city %>
+      <%= f.label :category %><br>
+      <%= f.select :category, ['Animals', 'Environmental', 'Health', 'Education', 'Art&Culture', 'Social Services', 'Advocacy', 'Other'], required: true %>
+    </p>
 
-    <%= f.select :state,  state_array %>
-   </p>
+    <p>
+      <%= f.label :Mission_Statement %><br>
+      <%= f.text_area :bio,  :cols => "50", :rows => "9", required: true %>
+     </p>
+    <p>
+      <%= f.label :Website %><br>
+      <%= f.url_field :website, required: true %>
+
+    </p>
+
+    <p>
+      <%= f.label :Phone %><br>
+      <%= f.text_field :phone, required: true %>
+    </p>
+
+    <p>
+      <%= f.label :Address %><br>
+      <%= f.text_field :address %>
+    </p>
+
+    <p>
+      <%= f.label :City %><br>
+      <%= f.text_field :city %>
+      <%= f.select :state,  state_array, required: true %>
+    </p>
 
 
-  <p>
-    <%= f.submit "Submit" %>
-  </p>
+    <p>
+      <%= f.submit "Submit" %>
+    </p>
+
+  <% end %>
+
+<% else %>
+  <h1>Edit Your Organization's Profile</h1>
+
+    <%= form_for :organization, url: organization_path(@org), method: :patch do |f| %>
+
+      <p>
+        <%= f.label :Organization_Name %><br>
+        <%= f.text_field :name, value: @org.name, required: true %>
+      </p>
+
+      <p>
+        <%= f.label :category %><br>
+        <%= f.select :category, ['Animals', 'Environmental', 'Health', 'Education', 'Art&Culture', 'Social Services', 'Advocacy', 'Other'], selected: @org.category, required: true  %>
+      </p>
+
+      <p>
+        <%= f.label :Mission_Statement %><br>
+        <%= f.text_area :bio,  :cols => "50", :rows => "9", value: @org.bio, required: true  %>
+       </p>
+      <p>
+        <%= f.label :Website %><br>
+        <%= f.url_field :website, value: @org.website, required: true  %>
+      </p>
+
+      <p>
+        <%= f.label :Phone %><br>
+        <%= f.text_field :phone, value: @org.phone, required: true  %>
+      </p>
+
+      <p>
+        <%= f.label :Address %><br>
+        <%= f.text_field :address, value: @org.address %>
+      </p>
+
+      <p>
+        <%= f.label :City %><br>
+        <%= f.text_field :city, value: @org.city, required: true  %>
+        <%= f.select :state,  state_array, selected: @org.state, required: true  %>
+      </p>
+
+
+      <p>
+        <%= f.submit "Submit" %>
+      </p>
+  <% end %>
 
 <% end %>
 
