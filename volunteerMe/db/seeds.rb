@@ -8,7 +8,8 @@
 20.times do
   Volunteer.create!(
     name: Faker::Name.name,
-    email: Faker::Internet.email
+    email: Faker::Internet.email,
+    password: "password"
     )
 end
 commitment_type = ["one-time", "weekly", "monthly", "mentorship", "pro-bono", "workshop", "other"]
@@ -17,6 +18,7 @@ commitment_type = ["one-time", "weekly", "monthly", "mentorship", "pro-bono", "w
     name: Faker::Name.name,
     category: Faker::Lorem.word,
     email: Faker::Internet.email,
+    password: "password",
     phone: Faker::PhoneNumber.cell_phone,
     website: Faker::Internet.url,
     bio: Faker::Lorem.sentence(3),
