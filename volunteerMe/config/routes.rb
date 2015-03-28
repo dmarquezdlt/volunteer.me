@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :organizations
-  devise_for :volunteers
+  devise_for :organizations, :path => "org"
+  devise_for :volunteers,  :path => "user"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   #   resources :volunteer_events
   # end
 
-  # resources :organizations do
-  #   resources :events
-  # end
+  resources :organizations do
+    resources :events
+  end
   root 'volunteers#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
