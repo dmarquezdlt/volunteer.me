@@ -10,6 +10,13 @@
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
+
+<% if volunteer_signed_in? %>
+  <%= link_to('Logout', destroy_volunteer_session_path) %>
+<% elsif organization_signed_in? %>
+  <%= link_to('Logout', destroy_organization_session_path) %>
+<% end %>
+
 <%= yield %>
 
 </body>
