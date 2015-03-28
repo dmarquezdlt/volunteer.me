@@ -1,20 +1,22 @@
 <div>
 
   <div>
-    <% if current_organization.name == @org.name %>
-    <% if @org.name.empty? %>
-      <% if organization_signed_in?%>
-      <div><%= link_to 'Create a Profile', edit_organization_path(@org.id) %> to post your volunteering opportunities.<div>
-      <% end %>
-    <% else %>
-      <% if organization_signed_in?%>
-        <div>
-          <p>Welcome, <%= @org.name %></p>
-          <%= link_to 'Edit Profile', edit_organization_path(@org.id) %>
-          <div>
+    <% if organization_signed_in?%>
+      <% if current_organization.id == @org.id %>
+
+        <% if  @org.name == nil  %>
+          <div><%= link_to 'Create a Profile', edit_organization_path(@org.id) %> to post your volunteering opportunities.<div>
+        <% else %>
+          <% if organization_signed_in?%>
+            <div>
+              <p>Welcome, <%= @org.name %></p>
+              <%= link_to 'Edit Profile', edit_organization_path(@org.id) %>
+              <%= link_to 'Create Event', new_organization_event_path(@org.id) %>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
-      <% end %>
+     <% end %>
 </div>
 
 <div>
@@ -47,3 +49,11 @@
 
 </div>
 </div>
+<% if organization_signed_in?%>
+  <% if current_organization.id == @org.id %>
+    <%= link_to 'Delete Account', organization_path(@org.id), method: :delete %>
+  <% end %>
+<% end %>
+
+
+
