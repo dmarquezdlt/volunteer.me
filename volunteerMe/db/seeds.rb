@@ -10,8 +10,9 @@
   Volunteer.create!(
     name: Faker::Name.name,
     email: Faker::Internet.email,
-    password: "password"
+    password: 'password',
     )
+
 end
 
 # 20.times do
@@ -37,7 +38,7 @@ commitment_type = ["one-time", "weekly", "monthly", "mentorship", "pro-bono", "w
     country: Faker::Address.country,
     )
   3.times do
-    Event.create!(
+    event = Event.create!(
       name: Faker::App.name,
       description: Faker::Hacker.say_something_smart,
       requirements: Faker::Hacker.verb,
@@ -52,5 +53,11 @@ commitment_type = ["one-time", "weekly", "monthly", "mentorship", "pro-bono", "w
       spots: rand(1..50),
       organization_id: org.id,
       )
+    vols = Volunteer.find(rand(Volunteer.count)+1).events << event
+    vols.each do |vol|
+      vol.volunteer_events.each {|event| event.update_attribute(:commited?, [true, false].sample)}
+    end
   end
 end
+
+
