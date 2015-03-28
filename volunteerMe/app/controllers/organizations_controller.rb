@@ -21,4 +21,9 @@ class OrganizationsController < ApplicationController
     redirect_to organizations_path
   end
 
+  private
+  def organization_params
+    params.require(:organization).permit(:name, :id, :email)
+  end
+
 end

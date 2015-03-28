@@ -1,4 +1,9 @@
 ORG PROFILE PAGE
+ <%= current_organization.id %>
+<% if organization_signed_in?%>
+you are an org
+<%= link_to 'Edit Profile', edit_organization_path(@org.id) %>
+<% end %>
 <div>
 <p> <%= @org.name %> </p>
 <p> Category: <%= @org.category %> </p>
