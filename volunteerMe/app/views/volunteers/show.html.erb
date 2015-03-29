@@ -1,33 +1,43 @@
 <h1>Volunteer Profile</h1>
 
-<p>Picture goes here </p>
+<p>SUPERHERO PICTURE </p>
 <p><%= @volunteer.name %></p>
 
-<p>superpowers list</p>
-
-<p>commited events list</p>
-<% @volunteer.volunteer_events.where(commited?:true).each do |e| %>
-<div>
-  <%= e.event.name %>
-</div>
+<h4>Superpowers</h4>
+<% @volunteer.superpowers.each do |power| %>
+  <div>
+    <%= power.name %>
+  </div>
 <% end %>
 
-<% if organization_signed_in? %>
-  <% if current_volunteer.id == @volunteer.id %>
-    <p>bookmarked events list. visible only for signed in user on thier page </p>
-    <% @volunteer.volunteer_events.where(commited?:false).each do |e| %>
+<h4>Commited events </h4>
+<% @volunteer.volunteer_events.where(commited?:true).each do |e| %>
   <div>
     <%= e.event.name %>
   </div>
-  <% end %>
-
-
-
-
-<%= link_to edit_volunteer_path(@volunteer), class: "btn btn-default" do %>
-  <i class="glyphicon glyphicon-edit">Edit</i>
-
-  <%= link_to 'Edit', edit_volunteer_path(@volunteer) %>
-  <% end %>
-
 <% end %>
+<div>
+<% if volunteer_signed_in? %>
+  <% if current_volunteer.id == @volunteer.id %>
+    <h4>Bookmarked events <small>visible only to you </small></h4>
+
+    <% @volunteer.volunteer_events.where(commited?:false).each do |e| %>
+      <div>
+        <%= e.event.name %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+</div>
+<% if volunteer_signed_in?%>
+  <% if current_volunteer.id == @volunteer.id %>
+   <%= link_to 'Edit Profile', edit_volunteer_path(@volunteer) %>
+
+    <%= link_to 'Delete Profile', volunteer_path(@volunteer), method: :delete %>
+  <% end %>
+<% end %>
+
+
+
+

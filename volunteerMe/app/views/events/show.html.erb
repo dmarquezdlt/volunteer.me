@@ -11,5 +11,10 @@
 <% if organization_signed_in? %>
   <%= link_to 'Edit Event', edit_organization_event_path(@org, @event) %>
   <%= link_to 'Delete Event', organization_event_path(@org, @event), method: :delete %>
+  <div> Committed Volunteers:
+    <% @event.volunteers.each do |v| %>
+      %= e.name %>
+    <% end %>
+  </div>
 <% end %>
 

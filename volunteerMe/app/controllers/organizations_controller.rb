@@ -1,7 +1,8 @@
 class OrganizationsController < ApplicationController
 
   def index
-   render 'volunteers/index'
+    @events = Event.all
+    redirect_to root_path
   end
 
   def show

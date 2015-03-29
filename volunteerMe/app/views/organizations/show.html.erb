@@ -10,16 +10,8 @@
             <div>
               <p>Welcome, <%= @org.name %></p>
               <%= link_to 'Edit Profile', edit_organization_path(@org.id) %>
-              <%= link_to 'Create Event', new_organization_event_path(@org.id) %>
             </div>
-          <% end %>
-        <% end %>
-      <% end %>
-     <% end %>
-</div>
-
-
-<div>
+            <div>
 <p> <%= @org.name %> </p>
 <p> Category: <%= @org.category %> </p>
 <p> Bio: <%= @org.bio %> </p>
@@ -27,6 +19,14 @@
 <p> <a href="<%= @org.website %>">Visit Website </a> </p>
 <p> Address <%= @org.address %>, <%= @org.city %>, <%= @org.state %> </p>
 </div>
+          <% end %>
+        <% end %>
+      <% end %>
+     <% end %>
+</div>
+
+
+
 
 <h3>Upcoming Events</h3>
 
@@ -52,6 +52,8 @@
 </div>
 <% if organization_signed_in?%>
   <% if current_organization.id == @org.id %>
+   <p><%= link_to 'Create Event', new_organization_event_path(@org.id) %></p>
+
     <%= link_to 'Delete Account', organization_path(@org.id), method: :delete %>
   <% end %>
 <% end %>
