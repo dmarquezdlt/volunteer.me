@@ -11,7 +11,13 @@
               <p>Welcome, <%= @org.name %></p>
               <%= link_to 'Edit Profile', edit_organization_path(@org.id) %>
             </div>
-            <div>
+          <% end %>
+        <% end %>
+      <% end %>
+     <% end %>
+</div>
+
+<div>
 <p> <%= @org.name %> </p>
 <p> Category: <%= @org.category %> </p>
 <p> Bio: <%= @org.bio %> </p>
@@ -19,13 +25,6 @@
 <p> <a href="<%= @org.website %>">Visit Website </a> </p>
 <p> Address <%= @org.address %>, <%= @org.city %>, <%= @org.state %> </p>
 </div>
-          <% end %>
-        <% end %>
-      <% end %>
-     <% end %>
-</div>
-
-
 
 
 <h3>Upcoming Events</h3>

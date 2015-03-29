@@ -8,13 +8,17 @@
  <%= link_to 'bookmark', new_volunteer_volunteer_event_path(current_volunteer, event: @event, commited: false) %>
 <% end %>
 
-<% if organization_signed_in? %>
+<% if organization_signed_in? && current_organization.id == @org.id %>
   <%= link_to 'Edit Event', edit_organization_event_path(@org, @event) %>
   <%= link_to 'Delete Event', organization_event_path(@org, @event), method: :delete %>
-  <div> Committed Volunteers:
-    <% @event.volunteers.each do |v| %>
-      %= e.name %>
+  <div>
+   Committed Volunteers:
+   <div>
+    <% @event.volunteers.each do |volunteer| %>
+     <%= volunteer.name %>
+      </div>
     <% end %>
   </div>
+
 <% end %>
 
