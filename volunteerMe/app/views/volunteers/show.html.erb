@@ -8,17 +8,20 @@
 
   <% @volunteer.superpowers.each do |power| %>
     <p><%= power.name %></p>
-    <p><%= link_to 'Edit', edit_volunteer_superpower_path(power, :volunteer_id=>@volunteer.id) %>
-       <%= link_to 'Destroy', volunteer_superpower_path(power, :volunteer_id=>@volunteer.id),
-           method: :delete,
-           data: {confirm: 'Are you sure'} %></p>
+    <% if can? :update, power %>
+      <p><%= link_to 'Edit', edit_volunteer_superpower_path(power, :volunteer_id=>@volunteer.id) %>
+    <% end %>
+    <% if can? :destroy, power %>
+      <%= link_to 'Destroy', volunteer_superpower_path(power, :volunteer_id=>@volunteer.id),
+        method: :delete,
+        data: {confirm: 'Are you sure'} %></p>
+    <% end %>
   <% end %>
 
 
   <h6 id = "results">New Superpower:</h6>
 
     <%= form_for([@volunteer, @volunteer.superpowers.build]) do |f| %>
-
       <p>
         <%= f.label :Superpower %><br>
         <%= f.text_field :name, class: "form-control" %>
@@ -27,7 +30,6 @@
       <p>
         <%= f.submit "New Superpower", class: "btn btn-large btn-primary" %>
       </p>
-
     <% end %>
 
 
@@ -36,7 +38,7 @@
 <% if @volunteer.volunteer_events  %>
       <% @volunteer.volunteer_events.where(commited?:true).each do |e| %>
         <div>
-         <%= e.event %>
+         <%= e.event.name %>
         </div>
       <% end %>
     <% else %>

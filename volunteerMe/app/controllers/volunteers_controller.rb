@@ -1,4 +1,5 @@
 class VolunteersController < ApplicationController
+  load_and_authorize_resource
 
   def index
     # @volunteer = Volunteer.find(params[:id])
@@ -12,6 +13,7 @@ class VolunteersController < ApplicationController
   def edit
     @volunteer = Volunteer.find(params[:id])
     @superpower = Superpower.new
+    # unauthorized! if current_volunteer.id != @volunteer.id
   end
 
 
