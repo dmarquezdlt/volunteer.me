@@ -15,19 +15,22 @@ class Ability
   end
 end
 
+    # if user.id ==1
+    #   can :manage, :all?
+    # else
+    #   can :real, Article
+    #   cannot :show, Article
+    # end
 
 
-# class Ability
-#   include CanCan::Ability
-
-#   def initialize
-#       current_volunteer = volunteer
-#       can [:read, :create], Superpower
-#       can [:update, :destroy], Volunteer, :volunteer_id => volunteer.id
-#    end
-
-
-# end
+    # class Ability
+    #   include CanCan::Ability
+    #   def initialize
+    #       current_volunteer = volunteer
+    #       can [:read, :create], Superpower
+    #       can [:update, :destroy], Volunteer, :volunteer_id => volunteer.id
+    #    end
+    # end
 
 
  # Define abilities for the passed in user here. For example:
