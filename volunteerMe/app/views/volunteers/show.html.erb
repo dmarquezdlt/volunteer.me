@@ -10,4 +10,7 @@
 <p>bookmarked events list. visible only for signed in user on thier page </p>
 
 
-<%= link_to 'Edit', edit_volunteer_path(@volunteer) %>
+
+<%= link_to edit_volunteer_path(@volunteer), class: "btn btn-default" do %>
+  <i class="glyphicon glyphicon-edit">Edit</i>
+<% end %>

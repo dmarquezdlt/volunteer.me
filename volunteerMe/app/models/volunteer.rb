@@ -10,4 +10,5 @@ class Volunteer < ActiveRecord::Base
 
   has_many :volunteer_events
   has_many :events, through: :volunteer_events
+  has_many :superpowers
 end

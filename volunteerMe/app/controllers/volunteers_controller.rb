@@ -10,10 +10,16 @@ class VolunteersController < ApplicationController
 
   def edit
     @volunteer = Volunteer.find(params[:id])
+    @superpower = Superpower.new
   end
+
 
   def update
      @volunteer = Volunteer.find(params[:id])
+
+     @newsuperpower = @volunteer.superpowers.create(superpower_params)
+
+
 
       if @volunteer.update(volunteer_params)
         redirect_to @volunteer
@@ -35,5 +41,11 @@ class VolunteersController < ApplicationController
     def volunteer_params
       params.require(:volunteer).permit(:name, :email)
     end
+
+    def superpower_params
+      params.require(:superpower).permit(:name)
+    end
+
+
 
 end
