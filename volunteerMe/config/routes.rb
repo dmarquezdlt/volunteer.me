@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
-
+ # get '/events', to: 'events#index'
 
 
   resources :volunteers do
@@ -15,11 +15,13 @@ Rails.application.routes.draw do
     resources :superpowers
   end
 
+resources :events
 
   resources :organizations do
     resources :events
   end
   root 'volunteers#index'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

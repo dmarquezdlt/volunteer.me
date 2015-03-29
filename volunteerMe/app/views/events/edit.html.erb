@@ -1,4 +1,4 @@
-<%= form_for :event, url:  organization_events_path do |f| %>
+<%= form_for :event, url:  organization_event_path(@organization, @event), method: :patch do |f| %>
 <p>
   <%= f.label :name %><br>
   <%= f.text_field :name %>

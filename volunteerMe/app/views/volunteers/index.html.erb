@@ -19,15 +19,14 @@
 <h2>Something Near You...</h2>
 
 <div class="container">
-  <div>
-    event 1
-  </div>
-  <div>
-    event 2
-  </div>
-  <div>
-    event 3
-  </div>
-</div>
+  <% @events.order(:date).order(:time_start).reverse_order.limit(3).each do |event| %>
+    <div>
+      Event: <%= event.name %><br>
+      Organization: <%= event.organization.name %><br>
+      Date: <%= event.date %><br>
+      Time: <%= event.time_start %>
+    </div>
+    <% end %>
 
-<button>Explore</button>
+</div>
+<%= link_to 'Explore', events_path %>

@@ -6,11 +6,28 @@
 <p>superpowers list</p>
 
 <p>commited events list</p>
+<% @volunteer.volunteer_events.where(commited?:true).each do |e| %>
+<div>
+  <%= e.event.name %>
+</div>
+<% end %>
 
-<p>bookmarked events list. visible only for signed in user on thier page </p>
+<% if organization_signed_in? %>
+  <% if current_volunteer.id == @volunteer.id %>
+    <p>bookmarked events list. visible only for signed in user on thier page </p>
+    <% @volunteer.volunteer_events.where(commited?:false).each do |e| %>
+  <div>
+    <%= e.event.name %>
+  </div>
+  <% end %>
+
 
 
 
 <%= link_to edit_volunteer_path(@volunteer), class: "btn btn-default" do %>
   <i class="glyphicon glyphicon-edit">Edit</i>
+
+  <%= link_to 'Edit', edit_volunteer_path(@volunteer) %>
+  <% end %>
+
 <% end %>

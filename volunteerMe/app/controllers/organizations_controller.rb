@@ -1,8 +1,8 @@
 class OrganizationsController < ApplicationController
 
-  # def index
-  #  @organization = Organization.all
-  # end
+  def index
+   render 'volunteers/index'
+  end
 
   def show
     @org = Organization.find(params[:id])
@@ -14,10 +14,6 @@ class OrganizationsController < ApplicationController
 
    def update
     @org = Organization.find(params[:id])
-    p "___________________________"
-    p @org
-    p "___________________________"
-    p organization_params
 
 
     if @org.update(organization_params)
