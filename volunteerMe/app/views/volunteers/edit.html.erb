@@ -2,6 +2,7 @@
 
 <%= form_for :volunteer, url: volunteer_path(@volunteer), method: :patch do |f| %>
 
+
   <p>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
@@ -11,6 +12,24 @@
     <%= f.label :email %><br>
     <%= f.text_field :email %>
   </p>
+
+  <%= fields_for @superpower do |u| %>
+   <p>
+    <%= u.label :NewSuperpower %><br>
+    <%= u.text_field :name %>
+    </p>
+  <% end %>
+
+
+  <% @volunteer.superpowers.each do |power| %>
+    <%= f.fields_for :superpowers, power do |power_name| %>
+      Super Power: <%= power_name.text_field :name %>
+    <% end %>
+  <% end %>
+
+
+
+
 
   <p>
     <%= f.submit "Submit" %>

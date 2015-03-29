@@ -9,8 +9,10 @@ Rails.application.routes.draw do
 
 
 
+
   resources :volunteers do
     resources :volunteer_events
+    resources :superpowers
   end
 
 
