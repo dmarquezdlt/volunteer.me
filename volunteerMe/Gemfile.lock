@@ -66,6 +66,11 @@ GEM
     minitest (5.5.1)
     multi_json (1.11.0)
     orm_adapter (0.5.0)
+    pg (0.18.1)
+    pg_search (0.7.9)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     rack (1.5.2)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -154,6 +159,8 @@ DEPENDENCIES
   hirb
   jbuilder (~> 2.0)
   jquery-rails
+  pg
+  pg_search
   rails (= 4.1.6)
   rspec-rails
   sass-rails (~> 4.0.3)
