@@ -22,6 +22,8 @@ resources :events
   end
   root 'volunteers#index'
 
+   resources :searches
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

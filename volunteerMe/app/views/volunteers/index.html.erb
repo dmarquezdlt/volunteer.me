@@ -10,10 +10,15 @@
     <li>type</li>
   </ul>
 
-  <form>
-    <input type="text" placeholder="French tutor...">
+  <!-- <form >
+    <input type="text" name = "search_value" placeholder="French tutor...">
     <input type="submit" value="Search">
-  </form>
+  </form> -->
+  <%= form_for :search, url: searches_path, method: :post do |f| %>
+    <%= f.label :entry %>
+    <%= f.text_area :entry %>
+    <p><%= f.submit %></p>
+  <% end %>
 </div>
 
 <h2>Something Near You...</h2>
