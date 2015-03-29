@@ -1,15 +1,39 @@
 
-<%= @event.name %> <br>
-
-
-
 <% if volunteer_signed_in? %>
- <%= link_to 'add', new_volunteer_volunteer_event_path(current_volunteer, event: @event, commited: true) %> |
+ <%= link_to 'volunteer', new_volunteer_volunteer_event_path(current_volunteer, event: @event, commited: true) %> |
  <%= link_to 'bookmark', new_volunteer_volunteer_event_path(current_volunteer, event: @event, commited: false) %>
 <% end %>
+<div>
+<h1>
+  <%= @event.name %> <br>
+</h1>
+<p> Hosted By: <%= @event.organization.name %> </p>
+<p> Details: <%= @event.description %> </p>
+<p> Skills needed: <%= @event.requirements %> </p>
+<p> Commitment Level: <%= @event.commitment_type %> </p>
+<p> Date: <%= @event.date.strftime('%m/%d/%Y') %> </p>
+<p> From: <%= @event.time_start.strftime('%r') %> - <%= @event.time_end.strftime('%r') %> </p>
+<p> Address: <%= @event.address %>, <%= @event.city %>, <%= @event.state %>, <%= @event.country %> </p>
+<p> # of volunteers needed: <%= @event.spots %> </p>
 
-<% if organization_signed_in? %>
+
+
+</div>
+<% if organization_signed_in? && current_organization.id == @org.id %>
   <%= link_to 'Edit Event', edit_organization_event_path(@org, @event) %>
   <%= link_to 'Delete Event', organization_event_path(@org, @event), method: :delete %>
+  <div>
+   Committed Volunteers:
+   <div>
+    <% @event.volunteers.each do |volunteer| %>
+     <%= volunteer.name %>
+      </div>
+    <% end %>
+  </div>
+
 <% end %>
 
+<% if volunteer_signed_in? %>
+ <%= link_to 'volunteer', new_volunteer_volunteer_event_path(current_volunteer, event: @event, commited: true) %> |
+ <%= link_to 'bookmark', new_volunteer_volunteer_event_path(current_volunteer, event: @event, commited: false) %>
+<% end %>
