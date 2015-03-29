@@ -11,21 +11,29 @@
 <% end %>
 
 <h4>Commited events </h4>
-<% @volunteer.volunteer_events.where(commited?:true).each do |e| %>
-  <div>
-    <%= e.event.name %>
-  </div>
+<% if @events %>
+  <% @volunteer.volunteer_events.where(commited?:true).each do |e| %>
+    <div>
+      <%= e.event.name %>
+    </div>
+  <% end %>
+  <% else %>
+  <p>You have not commited to any volunteering events yet. <%=link_to 'Search', events_path %> for some now!</p>
 <% end %>
 <div>
 <% if volunteer_signed_in? %>
   <% if current_volunteer.id == @volunteer.id %>
     <h4>Bookmarked events <small>visible only to you </small></h4>
-
-    <% @volunteer.volunteer_events.where(commited?:false).each do |e| %>
-      <div>
-        <%= e.event.name %>
-      </div>
-    <% end %>
+    <% if @events %>
+      <% @volunteer.volunteer_events.where(commited?:false).each do |e| %>
+        <div>
+         <%= e.event.name %>
+        </div>
+      <% end %>
+      <% else %>
+      <p>You have not bookmarked events yet. <%=link_to 'Search', events_path %> for some now!
+      </p>
+      <% end %>
   <% end %>
 <% end %>
 
