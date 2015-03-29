@@ -1,33 +1,69 @@
 <h1>Volunteer Profile</h1>
 
-<p>Picture goes here </p>
+<p>SUPERHERO PICTURE </p>
 <p><%= @volunteer.name %></p>
 
-<p>superpowers list</p>
-
-<p>commited events list</p>
-<% @volunteer.volunteer_events.where(commited?:true).each do |e| %>
-<div>
-  <%= e.event.name %>
-</div>
-<% end %>
-
-<% if organization_signed_in? %>
-  <% if current_volunteer.id == @volunteer.id %>
-    <p>bookmarked events list. visible only for signed in user on thier page </p>
-    <% @volunteer.volunteer_events.where(commited?:false).each do |e| %>
+<h4>Superpowers</h4>
+<% @volunteer.superpowers.each do |power| %>
   <div>
-    <%= e.event.name %>
+    <%= power.name %>
   </div>
-  <% end %>
+<% end %>
 
+<h4>Commited events </h4>
 
+<% if @volunteer.volunteer_events  %>
 
+      <% @volunteer.volunteer_events.where(commited?:true).each do |e| %>
 
-<%= link_to edit_volunteer_path(@volunteer), class: "btn btn-default" do %>
-  <i class="glyphicon glyphicon-edit">Edit</i>
+        <div>
+         <%= e.event %>
+        </div>
 
-  <%= link_to 'Edit', edit_volunteer_path(@volunteer) %>
-  <% end %>
+      <% end %>
+
+    <% else %>
+
+  <p>You have not commited to any volunteering events yet. <%=link_to 'Search', events_path %> for some now!</p>
 
 <% end %>
+
+<div>
+
+<% if volunteer_signed_in? %>
+
+  <% if current_volunteer.id == @volunteer.id %>
+
+    <h4>Bookmarked events <small>visible only to you </small></h4>
+
+    <% if @volunteer.volunteer_events  %>
+
+      <% @volunteer.volunteer_events.where(commited?:false).each do |e| %>
+
+        <div>
+         <%= e.event.name %>
+        </div>
+
+      <% end %>
+
+    <% else %>
+
+      <p>You have not bookmarked events yet. <%=link_to 'Search', events_path %> for some now!
+      </p>
+
+    <% end %>
+  <% end %>
+<% end %>
+
+</div>
+<% if volunteer_signed_in?%>
+  <% if current_volunteer.id == @volunteer.id %>
+   <%= link_to 'Edit Profile', edit_volunteer_path(@volunteer) %>
+
+    <%= link_to 'Delete Profile', volunteer_path(@volunteer), method: :delete %>
+  <% end %>
+<% end %>
+
+
+
+
