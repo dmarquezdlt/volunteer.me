@@ -1,6 +1,7 @@
 class VolunteersController < ApplicationController
 
   def index
+    # @volunteer = Volunteer.find(params[:id])
     @events = Event.all
   end
 
@@ -29,7 +30,6 @@ class VolunteersController < ApplicationController
 
     redirect_to volunteers_path
   end
-
 
   private
     def volunteer_params
