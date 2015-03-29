@@ -1,33 +1,58 @@
-<h1>Volunteer Profile</h1>
+<div class = "container">
 
-<p>Picture goes here </p>
-<p><%= @volunteer.name %></p>
+  <h1>Volunteer Profile</h1>
 
-<p>superpowers list</p>
+  <p>Picture goes here </p>
+  <p><%= @volunteer.name %></p>
 
-<p>commited events list</p>
-<% @volunteer.volunteer_events.where(commited?:true).each do |e| %>
-<div>
-  <%= e.event.name %>
-</div>
-<% end %>
+  <p>superpowers list</p>
 
-<% if organization_signed_in? %>
-  <% if current_volunteer.id == @volunteer.id %>
-    <p>bookmarked events list. visible only for signed in user on thier page </p>
-    <% @volunteer.volunteer_events.where(commited?:false).each do |e| %>
-  <div>
-    <%= e.event.name %>
-  </div>
+    <% @volunteer.superpowers.each do |power| %>
+
+      <p><%= power.name %></p>
+      <p><%= link_to 'Edit', edit_volunteer_superpower_path(power, :volunteer_id=>@volunteer.id) %>
+         <%= link_to 'Destroy', volunteer_superpower_path(power, :volunteer_id=>@volunteer.id),
+             method: :delete,
+             data: {confirm: 'Are you sure'} %></p>
+    <% end %>
+
+
+  <h6 id = "results">New Superpower:</h6>
+
+    <%= form_for([@volunteer, @volunteer.superpowers.build]) do |f| %>
+
+      <p>
+        <%= f.label :Superpower %><br>
+        <%= f.text_field :name, class: "form-control" %>
+      </p>
+
+      <p>
+        <%= f.submit "New Superpower", class: "btn btn-large btn-primary" %>
+      </p>
+
+    <% end %>
+
+
+  <p>commited events list</p>
+    <% @volunteer.volunteer_events.where(commited?:true).each do |e| %>
+      <div>
+        <%= e.event.name %>
+      </div>
+    <% end %>
+
+
+  <% if volunteer_signed_in? %>
+    <% if current_volunteer.id == @volunteer.id %>
+      <p>bookmarked events list. visible only for signed in user on thier page </p>
+      <% @volunteer.volunteer_events.where(commited?:false).each do |e| %>
+        <div>
+          <%= e.event.name %>
+        </div>
+      <% end %>
+    <% end %>
   <% end %>
 
-
-
-
-<%= link_to edit_volunteer_path(@volunteer), class: "btn btn-default" do %>
-  <i class="glyphicon glyphicon-edit">Edit</i>
 
   <%= link_to 'Edit', edit_volunteer_path(@volunteer) %>
-  <% end %>
 
-<% end %>
+</div>

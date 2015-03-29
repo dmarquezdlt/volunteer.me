@@ -13,20 +13,6 @@
     <%= f.text_field :email %>
   </p>
 
-  <%= fields_for @superpower do |u| %>
-   <p>
-    <%= u.label :NewSuperpower %><br>
-    <%= u.text_field :name %>
-    </p>
-  <% end %>
-
-  <h6>Current Superpowers</h6>
-  <% @volunteer.superpowers.each do |power| %>
-
-    <ul>
-      <li><%= power.name %></li>
-    </ul>
-  <% end %>
 
 
   <p>

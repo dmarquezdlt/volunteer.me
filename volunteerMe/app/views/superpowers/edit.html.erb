@@ -1,0 +1,21 @@
+<div class="container">
+
+<h1>Edit Your Answer</h1>
+
+
+<%= form_for :superpower, url: volunteer_superpower_path(@superpower, params[:id]), method: :patch do |f| %>
+
+  <p>
+    <%= f.label :superpower %><br>
+    <%= f.text_field :name %>
+   </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
+
+<%= link_to 'Back', volunteer_path(@volunteer) %>
+
+</div>
