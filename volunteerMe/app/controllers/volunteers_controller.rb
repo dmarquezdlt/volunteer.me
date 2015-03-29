@@ -20,7 +20,6 @@ class VolunteersController < ApplicationController
      @newsuperpower = @volunteer.superpowers.create(superpower_params)
 
 
-     @updatepowers = @volunteer.superpowers.update(superpower_params)
 
       if @volunteer.update(volunteer_params)
         redirect_to @volunteer
