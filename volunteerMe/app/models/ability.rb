@@ -3,17 +3,61 @@ class Ability
 
   def initialize(user)
     user ||= User.new
+
     case user
     when Volunteer
       can :read, :all
-      can [:update, :destroy], Superpower, :volunteer_id => user.id
-      can [:update, :destroy], Volunteer, :id => user.id
+      can [:update, :destroy, :create], Superpower, :volunteer_id => user.id
+      can [:update, :destroy], Volunteer#, #:id => user.id
 
     when Organization
       can :manage, :all
     end
   end
+
 end
+
+# class Ability
+#   include CanCan::Ability
+#   def initialize(user)
+#     user ||= User.new # guest user (not logged in)
+#     #Volunteer
+#    if user == Volunteer
+#         can :manage, :all
+
+#    #Organization
+#     elsif user == Organization
+#       can :manage, :all
+
+#     #Guest
+#     else
+#         can :read, :all
+
+#     end
+#   end
+# end
+
+
+
+
+
+
+
+
+
+  #   def initialize(user)
+  #   user ||= User.new
+  #   case user
+
+  #   when Volunteer
+  #     can :read, :all
+  #     can [:update, :destroy], Superpower, :volunteer_id => user.id
+  #     can [:update, :destroy], Volunteer, :id => user.id
+
+  #   when Organization
+  #     can :manage, :alltw
+  #   end
+  # end
 
     # if user.id ==1
     #   can :manage, :all?

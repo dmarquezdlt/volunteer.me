@@ -1,5 +1,4 @@
 class SuperpowersController < ApplicationController
-  load_and_authorize_resource
 
   def edit
     @superpower = Superpower.find(params[:id])
@@ -10,6 +9,7 @@ class SuperpowersController < ApplicationController
     @volunteer = Volunteer.find(params[:volunteer_id])
     @superpower = @volunteer.superpowers.create(superpower_params)
     redirect_to volunteer_path(@volunteer)
+    authorize! :create, @superpower
   end
 
   def update
@@ -17,6 +17,7 @@ class SuperpowersController < ApplicationController
     @superpower = Superpower.find(params[:id])
     @superpower.update(superpower_params)
     redirect_to volunteer_path(@volunteer)
+    authorize! :update, @superpower
   end
 
   def destroy
@@ -24,6 +25,7 @@ class SuperpowersController < ApplicationController
     @superpower = Superpower.find(params[:id])
     @superpower.destroy
     redirect_to volunteer_path(@volunteer)
+    authorize! :destroy, @superpower
   end
 
   private
