@@ -7,8 +7,8 @@ class Ability
     case user
     when Volunteer
       can :read, :all
-      can [:update, :destroy, :create], Superpower, :volunteer_id => user.id
-      can [:update, :destroy], Volunteer#, #:id => user.id
+      can [:create, :update, :destroy], Superpower, :volunteer_id => user.id
+      can [:update, :destroy], Volunteer, :id => user.id
 
     when Organization
       can :manage, :all

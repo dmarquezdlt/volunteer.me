@@ -5,4 +5,7 @@ class Organization < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :events, dependent: :destroy
+
+  include PgSearch
+  multisearchable :against => [:name, :category, :bio, :city, :state, :country]
 end
