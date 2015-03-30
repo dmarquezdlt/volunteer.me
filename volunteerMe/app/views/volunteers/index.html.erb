@@ -2,24 +2,131 @@
   <p>Volunteering Made Easy</p>
 </div>
 
-<div class="search-bar">
-  <ul>
-    <li>date</li>
-    <li>time</li>
-    <li>location</li>
-    <li>type</li>
-  </ul>
+<div class="search">
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+              <div class="form-section">
+                <div class="row">
+                  <%= form_for :search, url: searches_path, method: :post do |f| %>
+
+                      <div class="col-md-2">
+                        <div class="form-group">
+                          <div class="input-group">
+                            <%= f.date_field :date %>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-2">
+                        <div class="form-group">
+                          <div class="input-group">
+                            <input type="time" class="form-control" name="time" placeholder="Time">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-1">
+                        <div class="form-group">
+                              <%= f.select :state, state_array, class: "selectpicker" %>
+
+                       <!--    <select id="state" name="state" placeholder="San Francisco, New Orleans, etc." class="form-control">
+                              <option>AK</option>
+                              <option>AL</option>
+                              <option>AR</option>
+                              <option>AS</option>
+                              <option>AZ</option>
+                              <option>CA</option>
+                              <option>CO</option>
+                              <option>CT</option>
+                              <option>DC</option>
+                              <option>DE</option>
+                              <option>FL</option>
+                              <option>GA</option>
+                              <option>GU</option>
+                              <option>HI</option>
+                              <option>IA</option>
+                              <option>ID</option>
+                              <option>IL</option>
+                              <option>IN</option>
+                              <option>KS</option>
+                              <option>KY</option>
+                              <option>LA</option>
+                              <option>MA</option>
+                              <option>MD</option>
+                              <option>ME</option>
+                              <option>MI</option>
+                              <option>MN</option>
+                              <option>MO</option>
+                              <option>MS</option>
+                              <option>MT</option>
+                              <option>NC</option>
+                              <option>ND</option>
+                              <option>NE</option>
+                              <option>NH</option>
+                              <option>NJ</option>
+                              <option>NM</option>
+                              <option>NV</option>
+                              <option>NY</option>
+                              <option>OH</option>
+                              <option>OK</option>
+                              <option>OR</option>
+                              <option>PA</option>
+                              <option>PR</option>
+                              <option>RI</option>
+                              <option>SC</option>
+                              <option>SD</option>
+                              <option>TN</option>
+                              <option>TX</option>
+                              <option>UT</option>
+                              <option>VA</option>
+                              <option>VI</option>
+                              <option>VT</option>
+                              <option>WA</option>
+                              <option>WI</option>
+                              <option>WV</option>
+                              <option>WY</option>
+                          </select>
+ -->                        </div>
+                      </div>
+
+                      <div class="col-md-2">
+                        <div class="form-group">
+                          <select id="commitment_level" name="type" class="form-control">
+                              <option value="1">Hourly</option>
+                              <option value="2">Daily</option>
+                              <option value="3">Weekly</option>
+                              <option value="4">Monthly</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <button type="submit" class="btn btn-default btn-primary">Search</button>
+                      </div>
+
+                      <div class="col-md-2">
+                            <%= f.text_field :entry %>
+                            <%= f.submit %>
+
+                      </div>
+
+
+                        <% end %>
+
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
 
 
 
-  <%= form_for :search, url: searches_path, method: :post do |f| %>
-    <%= f.date_field :date %>
-    <%= f.datetime_field :time %>
-    <%= f.select :state, state_array %>
-    <%= f.text_field :entry %>
-    <%= f.submit %>
-  <% end %>
-</div>
+
+
+
+
+
+
+
 
 <h2>Something Near You...</h2>
 
