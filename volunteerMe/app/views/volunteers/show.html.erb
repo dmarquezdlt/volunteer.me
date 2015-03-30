@@ -3,45 +3,29 @@
 <h1>Volunteer Profile</h1>
 
 <p>SUPERHERO PICTURE </p>
+<h4>Name:</h4>
 <p><%= @volunteer.name %></p>
-<h4>Superpowers</h4>
 
-  <% @volunteer.superpowers.each do |power| %>
-    <p><%= power.name %></p>
-    <% if can? :update, power %>
-      <p><%= link_to 'Edit', edit_volunteer_superpower_path(power, :volunteer_id=>@volunteer.id) %>
-    <% end %>
-    <% if can? :destroy, power %>
-      <%= link_to 'Destroy', volunteer_superpower_path(power, :volunteer_id=>@volunteer.id),
-        method: :delete,
-        data: {confirm: 'Are you sure'} %></p>
-    <% end %>
+<h4>Superpowers:</h4>
+<% @volunteer.superpowers.each do |power| %>
+  <p><%= power.name %></p>
+  <% if can? :update, power %>
+    <p><%= link_to 'Edit', edit_volunteer_superpower_path(power, :volunteer_id=>@volunteer.id) %>
   <% end %>
+  <% if can? :destroy, power %>
+    <%= link_to 'Destroy', volunteer_superpower_path(power, :volunteer_id=>@volunteer.id),
+      method: :delete,
+      data: {confirm: 'Are you sure'} %></p>
+  <% end %>
+<% end %>
 
 
-  <h6 id = "results">New Superpower:</h6>
-
-    <%= form_for([@volunteer, @volunteer.superpowers.build]) do |f| %>
-      <p>
-        <%= f.label :Superpower %><br>
-        <%= f.text_field :name, class: "form-control" %>
-      </p>
-
-      <p>
-        <%= f.submit "New Superpower", class: "btn btn-large btn-primary" %>
-      </p>
-    <% end %>
-
-
-<h4>Commited events </h4>
-
+<h4>Commited events: </h4>
 <% if @volunteer.volunteer_events  %>
-      <% @volunteer.volunteer_events.where(commited?:true).each do |e| %>
-        <div>
-         <%= e.event.name %>
-        </div>
-      <% end %>
-    <% else %>
+  <% @volunteer.volunteer_events.where(commited?:true).each do |e| %>
+    <div><%= e.event.name %></div>
+  <% end %>
+<% else %>
   <p>You have not commited to any volunteering events yet. <%=link_to 'Search', events_path %> for some now!</p>
 <% end %>
 
@@ -49,7 +33,7 @@
 <div>
 <% if volunteer_signed_in? %>
   <% if current_volunteer.id == @volunteer.id %>
-    <h4>Bookmarked events <small>visible only to you </small></h4>
+    <h4>Bookmarked events: <small>visible only to you </small></h4>
     <% if @volunteer.volunteer_events  %>
       <% @volunteer.volunteer_events.where(commited?:false).each do |e| %>
         <div>
@@ -70,6 +54,17 @@
 
     <%= link_to 'Delete Profile', volunteer_path(@volunteer), method: :delete %>
   <% end %>
+<% end %>
+
+<h6>New Superpower:</h6>
+<%= form_for([@volunteer, @volunteer.superpowers.build]) do |f| %>
+  <p>
+    <%= f.label :Superpower %><br>
+    <%= f.text_field :name, class: "form-control" %>
+  </p>
+  <p>
+    <%= f.submit "New Superpower", class: "btn btn-large btn-primary" %>
+  </p>
 <% end %>
 
 
