@@ -12,11 +12,12 @@ class SearchesController < ApplicationController
 
   def show
     @search = Search.find(params[:id])
-    @matches = PgSearch.multisearch(@search.entry).paginate(page: params[:page], per_page: 2)
+    search_queries = [@search.commitment_type, @search.date, @search.time, @search.state].delete_if { |s| s == nil}
+    @matches = PgSearch.multisearch(search_queries).paginate(page: params[:page], per_page: 2)
   end
 
   private
     def search_params
-      params.require(:search).permit(:entry)
+      params.require(:search).permit(:entry, :date, :time, :commitment_type, :state)
     end
 end
