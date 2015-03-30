@@ -11,7 +11,8 @@
 <%= render_shareable :buttons=> ['twitter', 'linkedin'] %>
 
 
-<div class="fb-share-button" data-href= request.current_path data-layout="icon_link"></div>
+
+<div class="fb-share-button" href="#{@event.id}" data-layout="icon_link"></div>
 
 
 <% if volunteer_signed_in? %>
