@@ -12,8 +12,8 @@ class VolunteersController < ApplicationController
   def edit
     @volunteer = Volunteer.find(params[:id])
     @superpower = Superpower.new
-    authorize! :edit, @volunteer
-    authorize! :edit, @superpower
+    # authorize! :edit, @volunteer
+    # authorize! :edit, @superpower
     # unauthorized! if current_volunteer.id != @volunteer.id
   end
 
