@@ -1,8 +1,17 @@
 
+<%= render_shareable :buttons=> ['twitter', 'linkedin'] %>
+
+
 <% if volunteer_signed_in? %>
  <%= link_to 'volunteer', new_volunteer_volunteer_event_path(current_volunteer, event: @event, commited: true) %> |
  <%= link_to 'bookmark', new_volunteer_volunteer_event_path(current_volunteer, event: @event, commited: false) %>
 <% end %>
+
+
+
+
+
+
 <div>
 <h1>
   <%= @event.name %> <br>
