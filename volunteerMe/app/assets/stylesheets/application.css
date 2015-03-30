@@ -14,3 +14,38 @@
  *= require_self
  */
 
+.jumbotron {
+ background-image: url("http://www.trailofants.com/wp-content/uploads/2010/05/564570276_65929f5968.jpg");
+ background-repeat:none;
+ text-align: center;
+ background-size: 50%;
+ margin-top: 20px;
+ color:white;
+}
+
+.jumbotron h1{
+  color: white;
+  font-family: 'Poiret One', cursive;
+}
+
+.title_box p{
+  color: white;
+}
+
+.title_box{
+  background-color: rgba(0,0,0,0.4);
+  margin-left: 270px;
+  margin-right: 270px;
+  border-radius: 8px;
+  padding: 3px;
+  margin-bottom: 20px;
+}
+
+.search_bar{
+  margin-left: 145px;
+  margin-right: 100px;
+}
+
+h2{
+
+}
