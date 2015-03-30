@@ -5,6 +5,6 @@ class Event < ActiveRecord::Base
   has_many :volunteers, through: :volunteer_events
 
   include PgSearch
-  multisearchable :against => [:name, :requirements, :commitment_type, :date, :city, :state, :country]
+  multisearchable :against => [:name, :description, :requirements, :commitment_type, :date, :time_start, :time_end, :city, :state, :country]
   # pg_search_scope :search_title, :against => [:name]
 end

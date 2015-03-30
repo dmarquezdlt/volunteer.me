@@ -1,18 +1,32 @@
-<h2>Showing Search value</h2>
-You searched "<%= @search.entry %>"
-<% @matches.each do |match| %>
-<ul>
-  <li>EVENT NAME: <%= match.searchable.name %></li>
-  <li>DESCRIPTION: <%= match.searchable.description %></li>
-  <li>REQUIREMENTS: <%= match.searchable.requirements %></li>
-  <li>COMMITMENT TYPE: <%= match.searchable.commitment_type %></li>
-  <li>DATE: <%= match.searchable.date %></li>
-  <li>STARTS: <%= match.searchable.time_start %></li>
-  <li>ENDS: <%= match.searchable.time_end %></li>
-  <li>ADDRESS: <%= match.searchable.address %></li>
-  <li>CITY: <%= match.searchable.city %></li>
-  <li>STATE: <%= match.searchable.state %></li>
-  <li>COUNTRY: <%= match.searchable.country %></li>
-  <li>SPOTS: <%= match.searchable.spots %></li>
-</ul>
+<h2>You searched "<%= @search.entry %>"...</h2>
+
+<%@matches.each do |match| %>
+  <% if  match.searchable_type == "Event" %>
+    <ul>
+      <li>EVENT NAME: <%= link_to match.searchable.name,  event_path(match.searchable) %></li>
+      <li>DESCRIPTION: <%= match.searchable.description %></li>
+      <li>REQUIREMENTS: <%= match.searchable.requirements %></li>
+      <li>COMMITMENT TYPE: <%= match.searchable.commitment_type %></li>
+      <li>DATE: <%= match.searchable.date %></li>
+      <li>STARTS: <%= match.searchable.time_start %></li>
+      <li>ENDS: <%= match.searchable.time_end %></li>
+      <li>ADDRESS: <%= match.searchable.address %></li>
+      <li>CITY: <%= match.searchable.city %></li>
+      <li>STATE: <%= match.searchable.state %></li>
+      <li>COUNTRY: <%= match.searchable.country %></li>
+      <li>SPOTS: <%= match.searchable.spots %></li>
+    </ul>
+    <% else %>
+     <ul>
+      <li>ORGANIZATION NAME: <%= link_to match.searchable.name,  organization_path(match.searchable)%> </li>
+      <li>EMAIL: <%= match.searchable.email %></li>
+      <li>CATEGORY: <%= match.searchable.category %></li>
+      <li> BIO: <%= match.searchable.bio %></li>
+      <li>ADDRESS: <%= match.searchable.address %></li>
+      <li>CITY: <%= match.searchable.city %></li>
+      <li>STATE: <%= match.searchable.state %></li>
+      <li>COUNTRY: <%= match.searchable.country %></li>
+    </ul>
+
+    <% end %>
 <% end %>
