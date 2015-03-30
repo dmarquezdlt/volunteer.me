@@ -40,7 +40,7 @@
 <% if @volunteer.volunteer_events  %>
       <% @volunteer.volunteer_events.where(commited?:true).each do |e| %>
         <div>
-         <%= e.event.name %>
+         <%= link_to e.event.name, event_path(e) %>
         </div>
       <% end %>
     <% else %>
@@ -55,7 +55,7 @@
     <% if @volunteer.volunteer_events  %>
       <% @volunteer.volunteer_events.where(commited?:false).each do |e| %>
         <div>
-         <%= e.event.name %>
+         <%= link_to e.event.name, event_path(e)%>
         </div>
       <% end %>
     <% else %>

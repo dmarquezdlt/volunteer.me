@@ -56,6 +56,8 @@
 <% end %>
 
 <% if volunteer_signed_in? %>
+<% unless current_volunteer.events.include?(@event) %>
  <%= link_to 'volunteer', new_volunteer_volunteer_event_path(current_volunteer, event: @event, commited: true) %> |
  <%= link_to 'bookmark', new_volunteer_volunteer_event_path(current_volunteer, event: @event, commited: false) %>
+ <% end %>
 <% end %>
