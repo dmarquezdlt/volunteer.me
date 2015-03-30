@@ -18,9 +18,9 @@
     <% end %>
   <% end %>
 
-
-  <h6 id = "results">New Superpower:</h6>
-
+<% if volunteer_signed_in? %>
+  <% if current_volunteer.id == @volunteer.id %>
+    <h6 id = "results">New Superpower:</h6>
     <%= form_for([@volunteer, @volunteer.superpowers.build]) do |f| %>
       <p>
         <%= f.label :Superpower %><br>
@@ -31,6 +31,8 @@
         <%= f.submit "New Superpower", class: "btn btn-large btn-primary" %>
       </p>
     <% end %>
+  <% end %>
+<% end %>
 
 
 <h4>Commited events </h4>

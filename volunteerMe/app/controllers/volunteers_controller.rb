@@ -1,5 +1,4 @@
 class VolunteersController < ApplicationController
-  load_and_authorize_resource
 
   def index
     # @volunteer = Volunteer.find(params[:id])
@@ -13,24 +12,27 @@ class VolunteersController < ApplicationController
   def edit
     @volunteer = Volunteer.find(params[:id])
     @superpower = Superpower.new
+    authorize! :edit, @volunteer
+    authorize! :edit, @superpower
     # unauthorized! if current_volunteer.id != @volunteer.id
   end
 
 
   def update
     @volunteer = Volunteer.find(params[:id])
+    authorize! :edit, @volunteer
 
       if @volunteer.update(volunteer_params)
         redirect_to @volunteer
       else
         render 'edit'
       end
-
   end
 
   def destroy
     @volunteer = Volunteer.find(params[:id])
     @volunteer.destroy
+    authorize! :destroy, @volunteer
     redirect_to volunteers_path
   end
 
