@@ -14,6 +14,8 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Knewave|Sarina|Aclonica' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Poiret+One|Lobster' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
 
@@ -29,9 +31,19 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+
       <a class="navbar-brand" href="/">
-        <img src="https://40.media.tumblr.com/a85fec475489be4cf2f1c0343d45d37a/tumblr_nlxxyxl1OL1u2jsm6o1_400.jpg" alt="Volunteer.me" height="25px">
+        Home
       </a>
+
+       <div class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <%= form_for :search, url: searches_path, method: :post do |f| %>
+            <%= f.text_field :entry %>
+            <%= f.submit "Search", class: "btn btn-large btn-default" %>
+          <% end %>
+        </div>
+       </div>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
