@@ -1,46 +1,66 @@
-<% unless @search.entry == nil%>
-<h2>You searched "<%= @search.entry %>"...</h2>
-<% end %>
+<div class="container">
 
-<% if @matches.empty? %>
-<p>No volunteer opportunities match your search. <%= link_to "Try again", root_path  %></p>
-<% else  %>
-<div id="matches-list">
-  <input class="search" placeholder="Search" />
-    <button class="sort" data-sort="state">
-      Sort by State
-    </button>
+  <% unless @search.entry == nil%>
+  <h2>You searched "<%= @search.entry %>"...</h2>
+  <% end %>
 
-    <select name="state" id="filter-state">
-      <option selected="selected">Select a State</option>
-      <option value="ca">CA</option>
-      <option value="sd">SD</option>
-    </select>
+  <% if @matches.empty? %>
+  <p>No volunteer opportunities match your search. <%= link_to "Try again", root_path  %></p>
+  <% else  %>
+  <div id="matches-list">
+    <center>
+    <input class="search" placeholder="Search" />
+      <select name="state" id="filter-state">
+        <option selected="selected">Sort by</option>
+        <option><button class="sort" data-sort="state">
+        Sort by State
+      </button></option>
+        <option><button class="sort" data-sort="date">
+        Sort by Date
+      </button></option>
+        <option><button class="sort" data-sort="commitment">
+        Sort by Commitment Type
+      </button></option>
+        <option><button class="sort" data-sort="time">
+        Sort by Time
+      </button></option>
+      </select>
+    </center>
 
+    <div class="results">
+      <ul class="list">
+        <%@matches.each do |match| %>
+        <% if  match.searchable_type == "Event" %>
 
-  <ul class="list">
-    <%@matches.each do |match| %>
-    <% if  match.searchable_type == "Event" %>
+        <li>
+          <div class="col-sm-4 event-image">
 
-    <li>
-      <h3 class="name"> <%= link_to match.searchable.name,  event_path(match.searchable) %></h3>
-      <p class="description"><%= match.searchable.description %></p>
-      <p class="commitment">Commitment: <strong><%= match.searchable.commitment_type %></strong></p>
-      <p>When: <span class="date"><%= match.searchable.date.strftime("%a, %b %e, %Y ") %></span> from <span class="time"><%= match.searchable.time_start.strftime("%l:%M %P") %></span>  to <%= match.searchable.time_end.strftime("%l:%M %P") %></p>
-      <p>Where: <%= match.searchable.city %>, <span class="state"><%= match.searchable.state %></span></p>
-      <p>SPOTS: <%= match.searchable.spots %></p>
-    </li>
-    <% else %>
-    <li>
-      <h3>ORGANIZATION NAME: <%= link_to match.searchable.name,  organization_path(match.searchable)%></h3>
-      <p>EMAIL: <%= match.searchable.email %></p>
-      <p>CATEGORY: <%= match.searchable.category %></p>
-      <p>BIO: <%= match.searchable.bio %></p></li>
+          <img src="http://2xxuz23rft0449gqis2s2t0l.wpengine.netdna-cdn.com/wp-content/uploads/2013/12/gi-icon-hands-blue.png" height="200px" width="180px">
+          </div>
 
-      <% end %>
-      <% end %>
-    </ul>
+          <div class="col-sm-8" >
+          <h3 class="name"> <%= link_to match.searchable.name,  event_path(match.searchable) %></h3>
+          <p class="description"><%= match.searchable.description %></p>
+          <p class="commitment">Commitment: <strong><%= match.searchable.commitment_type %></strong></p>
+          <p>When: <span class="date"><%= match.searchable.date.strftime("%a, %b %e, %Y ") %></span> from <span class="time"><%= match.searchable.time_start.strftime("%l:%M %P") %></span>  to <%= match.searchable.time_end.strftime("%l:%M %P") %></p>
+          <p>Where: <%= match.searchable.city %>, <span class="state"><%= match.searchable.state %></span></p>
+          <p>SPOTS: <%= match.searchable.spots %></p>
+          </div>
+        </li>
+        <% else %>
+        <li>
+          <h3>ORGANIZATION NAME: <%= link_to match.searchable.name,  organization_path(match.searchable)%></h3>
+          <p>EMAIL: <%= match.searchable.email %></p>
+          <p>CATEGORY: <%= match.searchable.category %></p>
+          <p>BIO: <%= match.searchable.bio %></p></li>
+
+          <% end %>
+          <% end %>
+        </ul>
+        </div>
   </div>
 
-  <%= will_paginate @matches %>
+  <center><%= will_paginate @matches, renderer: BootstrapPagination::Rails %></center>
 <% end %>
+
+</div>

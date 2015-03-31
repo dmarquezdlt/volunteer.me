@@ -106,7 +106,7 @@ footer h3{
 }
 
 .sm_button {
-  
+
 }
 
 .list-group{
@@ -144,7 +144,7 @@ span.italic{
   margin-right: 20px;
 }
 
-nav.share {display:inline-block;} 
+nav.share {display:inline-block;}
 nav.share div {float:left;}
 nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium sized buttons */
 #___plusone_0 {font-size: default !important;}
@@ -157,7 +157,8 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
 .social_media {
   display: flex;
 }
-.col-sm-4 img{
+
+.map_img img{
   border-radius: 12px;
   border: grey 1px solid;
 }
@@ -185,4 +186,16 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
 
 #foot tr td{
   text-align: center;
+}
+
+ul li{
+  list-style: none;
+}
+
+.results{
+  padding-top: 40px;
+}
+
+.results img{
+  padding-top: 40px;
 }

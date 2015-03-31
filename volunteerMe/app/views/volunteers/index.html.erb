@@ -28,9 +28,9 @@
 
               <h4><%= event.organization.name %></h4>
 
-              <h5><%= event.time_start %></h5>
+              <h5><%= event.time_start.strftime("%l:%M %P") %></h5>
 
-              <h5><%= event.date %></h5>
+              <h5><%= event.date.strftime("%a, %b %e, %Y ") %></h5>
 
             <p><a href="#" class="btn btn-default" role="button">Details</a></p>
             </div>
