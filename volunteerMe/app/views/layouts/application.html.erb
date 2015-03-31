@@ -33,7 +33,17 @@
       </button>
       <a class="navbar-brand" href="/">Home</a>
     </div>
-    <% end %>
+
+    <div class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <%= form_for :search, url: searches_path, method: :post do |f| %>
+            <%= f.text_field :entry %>
+            <%= f.submit "Search", class: "btn btn-large btn-primary" %>
+          <% end %>
+        </div>
+       </div>
+
+
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
