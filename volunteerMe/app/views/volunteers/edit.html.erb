@@ -1,30 +1,53 @@
-<h1>Editing Volunteer Information</h1>
 
-<%= form_for :volunteer, url: volunteer_path(@volunteer), method: :patch do |f| %>
+<div class="container" style="padding-top: 60px;">
+  <h1 class="page-header">Edit Profile</h1>
+
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="text-center">
+        <img src="http://lorempixel.com/200/200/people/9/" class="avatar img-circle img-thumbnail" alt="avatar">
+      </div>
+
+    </div>
+    <!-- edit form column -->
+    <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+
+      <div class="alert alert-info alert-dismissable">
+        <a class="panel-close close" data-dismiss="alert">×</a>
+        <i class="fa fa-coffee"></i>
+        Edit your profile.
+      </div>
+      <h3>Personal info</h3>
 
 
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-   </p>
+        <%= form_for :volunteer, url: volunteer_path(@volunteer), method: :patch do |f| %>
 
-  <p>
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </p>
+          <%= f.label :name, class: "col-lg-3 control-label" %>
+          <div class="col-lg-9">
+          <%= f.text_field :name,  class: "form-control"%><br>
+          </div>
+
+          <%= f.label :email, class: "col-lg-3 control-label" %>
+          <div class="col-lg-9">
+          <%= f.text_field :email, class: "form-control pul"%><br>
+          </div>
+
+          <%= f.submit "Submit", class: "btn btn-large btn-primary pull-right" %>
+
+        <% end %>
+
+        <div>
+
+           <%= link_to 'Back', volunteer_path %> <br>
+           <%= link_to 'Delete Profile', volunteer_path(@volunteer), method: :delete, data: {confirm: 'Are you sure you want to Delete your Account'} %>
+
+        </div>
 
 
-
-  <p>
-    <%= f.submit "Submit" %>
-  </p>
-
-<% end %>
-
-<%= link_to 'Back', volunteer_path %>
-<%= link_to volunteer_path(@volunteer),
-              method: :delete,
-              data: {confirm: 'Are you sure you want to Delete your Account'},
-              class: "btn btn-default" do %>
-                <i class="glyphicon glyphicon-trash"></i>
-              <% end %>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
