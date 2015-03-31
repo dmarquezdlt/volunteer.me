@@ -16,20 +16,22 @@
 
 .jumbotron {
  background-image: url("http://www.trailofants.com/wp-content/uploads/2010/05/564570276_65929f5968.jpg");
- background-repeat:none;
+ background-repeat:repeat-x;
  text-align: center;
  background-size: 50%;
  margin-top: 20px;
- color:white;
 }
 
-.jumbotron h1{
+.jumbotron h2{
+  font-family: 'Cinzel Decorative', cursive;
   color: white;
-  font-family: 'Poiret One', cursive;
+  font-size: 50px;
 }
 
-.title_box p{
+.jumbotron h3{
   color: white;
+  font-family: "Leckerli One";
+  font-weight: thin;
 }
 
 .title_box{
@@ -46,6 +48,14 @@
   margin-right: 100px;
 }
 
-h2{
+.near_you{
+  padding: 60px;
+  text-align: center;
+  color:black;
+  font-family: 'Lora', serif;
+}
 
+footer{
+/*border-top: solid 2px black;*/
+padding-top: 100px;
 }
