@@ -5,6 +5,7 @@ gem 'will_paginate', '~> 3.0'
 gem "pg_search"
 gem 'pg'
 
+gem 'listjs-rails'
 gem 'cancancan', '~> 1.10'
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

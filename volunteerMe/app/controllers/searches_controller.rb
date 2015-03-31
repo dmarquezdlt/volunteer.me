@@ -4,8 +4,6 @@ class SearchesController < ApplicationController
   end
 
   def create
-    p "_________________"
-    p search_params
     @search = Search.new(search_params)
     @search.save
     redirect_to @search
@@ -14,7 +12,7 @@ class SearchesController < ApplicationController
   def show
     @search = Search.find(params[:id])
     search_queries = [@search.entry, @search.commitment_type, @search.date, @search.time_start, @search.state].delete_if { |s| s == nil}
-    @matches = PgSearch.multisearch(search_queries).paginate(page: params[:page], per_page: 2)
+    @matches = PgSearch.multisearch(search_queries).paginate(page: params[:page], per_page: 5)
   end
 
   private
