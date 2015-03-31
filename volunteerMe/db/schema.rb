@@ -73,6 +73,10 @@ ActiveRecord::Schema.define(version: 20150329022923) do
 
   create_table "searches", force: true do |t|
     t.string   "entry"
+    t.string   "date"
+    t.string   "time"
+    t.string   "state"
+    t.string   "commitment_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

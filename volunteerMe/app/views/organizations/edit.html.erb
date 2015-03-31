@@ -16,17 +16,17 @@
 
     <p>
       <%= f.label :Mission_Statement %><br>
-      <%= f.text_area :bio,  :cols => "50", :rows => "9", required: true %>
+      <%= f.text_area :bio,  :cols => "50", :rows => "9", required: true, placeholder: "What your organization is all about" %>
      </p>
     <p>
       <%= f.label :Website %><br>
-      <%= f.url_field :website, required: true %>
+      <%= f.url_field :website, required: true, placeholder: "http://" %>
 
     </p>
 
     <p>
       <%= f.label :Phone %><br>
-      <%= f.text_field :phone, required: true %>
+      <%= f.telephone_field :phone, required: true,  placeholder: "(888) 999-9999" %>
     </p>
 
     <p>
@@ -36,7 +36,7 @@
 
     <p>
       <%= f.label :City %><br>
-      <%= f.text_field :city %>
+      <%= f.text_field :city  , required: true%>
       <%= f.select :state,  state_array, required: true %>
     </p>
 
@@ -73,7 +73,7 @@
 
       <p>
         <%= f.label :Phone %><br>
-        <%= f.text_field :phone, value: @org.phone, required: true  %>
+        <%= f.telephone_field :phone, value: @org.phone, required: true %>
       </p>
 
       <p>

@@ -36,7 +36,7 @@
 <p> Date: <%= @event.date.strftime('%m/%d/%Y') %> </p>
 <p> From: <%= @event.time_start.strftime('%r') %> - <%= @event.time_end.strftime('%r') %> </p>
 <p> Address: <%= @event.address %>, <%= @event.city %>, <%= @event.state %>, <%= @event.country %> </p>
-<p> # of volunteers needed: <%= @event.spots - commited_volunteers %> </p>
+<p> # of volunteers needed: <%= @event.spots - commited_volunteers || 0 %> </p>
 
   <div>
    Committed Volunteers:
