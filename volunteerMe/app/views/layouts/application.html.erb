@@ -19,7 +19,7 @@
 </head>
 <body>
 
-
+<div class="container">
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -39,13 +39,32 @@
        <div class="navbar-form navbar-left" role="search">
         <div class="form-group">
           <%= form_for :search, url: searches_path, method: :post do |f| %>
-            <%= f.text_field :entry %>
+            <%= f.text_field :entry, placeholder: "search volunteer opportunties...", size: 30 %>
             <%= f.submit "Search", class: "btn btn-large btn-default" %>
+          <% unless volunteer_signed_in? || organization_signed_in? %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Sign up <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/user/sign_up">As a Volunteer</a></li>
+                <li><a href="/org/sign_up">As a Organization</a></li>
+              </ul>
+            </li>
           <% end %>
-        </div>
-       </div>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+      </div><!-- /.container-fluid -->
+      </div><!-- /.container-fluid -->
+    </nav>
     </div>
 
+    <div class="jumbotron">
+      <div class="title_box">
+        <h2>Volunteer.me</h2>
+        <h3>Volunteering made easy.</h3>
+      </div>
+
+      <p><%= link_to 'Explore', events_path, class: "btn btn-success btn-lg" %></p>
+    </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav navbar-right">
@@ -64,11 +83,11 @@
 
         <% if volunteer_signed_in? %>
             <li><%= link_to('Search', events_path) %></li>
-            <li><%= link_to('Home', volunteer_path(current_volunteer)) %></li>
+            <li><%= link_to('Profile', volunteer_path(current_volunteer)) %></li>
             <li><%= link_to('Logout', destroy_volunteer_session_path) %></li>
         <% elsif organization_signed_in? %>
             <li><%= link_to('Logout', destroy_organization_session_path) %></li>
-            <li><%= link_to('Home', organization_path(current_organization)) %></li>
+            <li><%= link_to('Profile', organization_path(current_organization)) %></li>
         <% end %>
 
         <% unless volunteer_signed_in? || organization_signed_in? %>
@@ -80,10 +99,6 @@
             </ul>
           </li>
         <% end %>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
 
 <%= yield %>
 

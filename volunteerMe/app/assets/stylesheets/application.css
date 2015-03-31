@@ -58,10 +58,65 @@
 footer{
   margin: 0 auto;
   width: 100%;
+  text-align: center;
 }
 
 footer h3{
   display:inline-block;
   padding:50px 200px 50px 200px;
 
+}
+
+.social_media{
+  display:inline;
+  float:right;
+}
+
+.event_name{
+  font-family: 'Lora', serif;
+  padding-bottom: 40px;
+  float: right;
+  margin-right: 20%;
+}
+
+.event_name h1{
+  font-family: 'Cinzel Decorative', cursive;
+  text-align: center;
+  width:135%;
+  background-color: rgba(0,0,0,0.7);
+  padding: 75px 0px 75px 0px;
+  border-radius: 380px;
+  color:white;
+}
+
+.committed_volunteers{
+}
+
+.list-group{
+  width: 80%;
+}
+
+span.italic{
+  font-style: italic;
+}
+
+
+.container-fluid h3{
+  font-family: 'Lora', serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.col-sm-4{
+  margin-top:0px;
+  text-align: center;
+}
+
+.col-sm-4 img{
+  border-radius: 12px;
+  border: grey 1px solid;
+}
+
+.thumbnail{
+  border-radius: 15px;
 }

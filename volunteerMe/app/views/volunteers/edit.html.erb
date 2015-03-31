@@ -9,6 +9,7 @@
         <img src="http://lorempixel.com/200/200/people/9/" class="avatar img-circle img-thumbnail" alt="avatar">
       </div>
 
+<<<<<<< HEAD
     </div>
     <!-- edit form column -->
     <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
@@ -19,6 +20,17 @@
         Edit your profile.
       </div>
       <h3>Personal info</h3>
+=======
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name, required: true%>
+   </p>
+
+  <p>
+    <%= f.label :email %><br>
+    <%= f.text_field :email, required: true%>
+  </p>
+>>>>>>> 62f8ee65108b74e082249cc812dd101abf2f12eb
 
 
         <%= form_for :volunteer, url: volunteer_path(@volunteer), method: :patch do |f| %>
