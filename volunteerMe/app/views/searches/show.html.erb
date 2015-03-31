@@ -5,35 +5,41 @@
 <% if @matches.empty? %>
 <p>No volunteer opportunities match your search. <%= link_to "Try again", root_path  %></p>
 <% end  %>
-<%@matches.each do |match| %>
-  <% if  match.searchable_type == "Event" %>
-    <ul>
-      <li>EVENT NAME: <%= link_to match.searchable.name,  event_path(match.searchable) %></li>
-      <li>DESCRIPTION: <%= match.searchable.description %></li>
-      <li>REQUIREMENTS: <%= match.searchable.requirements %></li>
-      <li>COMMITMENT TYPE: <%= match.searchable.commitment_type %></li>
-      <li>DATE: <%= match.searchable.date.strftime("%b %e, %Y - %a") %></li>
-      <li>STARTS: <%= match.searchable.time_start.strftime("%l:%M %P") %></li>
-      <li>ENDS: <%= match.searchable.time_end.strftime("%l:%M %P") %></li>
-      <li>ADDRESS: <%= match.searchable.address %></li>
-      <li>CITY: <%= match.searchable.city %></li>
-      <li>STATE: <%= match.searchable.state %></li>
-      <li>COUNTRY: <%= match.searchable.country %></li>
-      <li>SPOTS: <%= match.searchable.spots %></li>
-    </ul>
+<div id="matches-list">
+  <input class="search" placeholder="Search" />
+    <button class="sort" data-sort="state">
+      Sort by State
+    </button>
+
+    <select name="state" id="filter-state">
+      <option selected="selected">Select a State</option>
+      <option value="ca">CA</option>
+      <option value="sd">SD</option>
+    </select>
+
+
+  <ul class="list">
+    <%@matches.each do |match| %>
+    <% if  match.searchable_type == "Event" %>
+
+    <li>
+      <h3 class="name"> <%= link_to match.searchable.name,  event_path(match.searchable) %></h3>
+      <p class="description"><%= match.searchable.description %></p>
+      <p class="commitment">Commitment: <strong><%= match.searchable.commitment_type %></strong></p>
+      <p>When: <span class="date"><%= match.searchable.date.strftime("%a, %b %e, %Y ") %></span> from <span class="time"><%= match.searchable.time_start.strftime("%l:%M %P") %></span>  to <%= match.searchable.time_end.strftime("%l:%M %P") %></p>
+      <p>Where: <%= match.searchable.city %>, <span class="state"><%= match.searchable.state %></span></p>
+      <p>SPOTS: <%= match.searchable.spots %></p>
+    </li>
     <% else %>
-     <ul>
-      <li>ORGANIZATION NAME: <%= link_to match.searchable.name,  organization_path(match.searchable)%> </li>
-      <li>EMAIL: <%= match.searchable.email %></li>
-      <li>CATEGORY: <%= match.searchable.category %></li>
-      <li> BIO: <%= match.searchable.bio %></li>
-      <li>ADDRESS: <%= match.searchable.address %></li>
-      <li>CITY: <%= match.searchable.city %></li>
-      <li>STATE: <%= match.searchable.state %></li>
-      <li>COUNTRY: <%= match.searchable.country %></li>
+    <li>
+      <h3>ORGANIZATION NAME: <%= link_to match.searchable.name,  organization_path(match.searchable)%></h3>
+      <p>EMAIL: <%= match.searchable.email %></p>
+      <p>CATEGORY: <%= match.searchable.category %></p>
+      <p>BIO: <%= match.searchable.bio %></p></li>
+
+      <% end %>
+      <% end %>
     </ul>
+  </div>
 
-    <% end %>
-<% end %>
-
-<%= will_paginate @matches %>
+  <%= will_paginate @matches %>

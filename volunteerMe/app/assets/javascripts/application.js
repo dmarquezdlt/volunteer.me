@@ -13,4 +13,21 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require list
 //= require_tree .
+
+$(document).ready(function(){
+  var options = {
+  valueNames: ['name', 'description', 'time', 'date', 'state', 'commitment']
+};
+
+  var matchlist = new List('matches-list', options);
+  // $('#filter-state').change(function(){
+  //   var selection = this.value;
+  //   if (selection) {
+  //     matchlist.filter(function(item){
+  //       return (item.values().state == selection);
+  //     });
+  //   }
+  // })
+});
