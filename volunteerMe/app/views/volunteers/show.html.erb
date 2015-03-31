@@ -11,12 +11,13 @@
     </div>
     <!-- edit form column -->
     <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
-
-      <div class="alert alert-info alert-dismissable">
-        <a class="panel-close close" data-dismiss="alert">×</a>
-        <i class="fa fa-coffee"></i>
-        Welcome to your profile.
-      </div>
+    <% if current_volunteer == @volunteer %>
+        <div class="alert alert-info alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a>
+          <i class="fa fa-coffee"></i>
+          Welcome to your profile.
+        </div>
+    <% end %>
       <h3>Personal info</h3>
 
 
