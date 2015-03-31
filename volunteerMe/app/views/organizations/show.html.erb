@@ -33,16 +33,12 @@
   <ul>
     <% @org.events.each do |event| %>
       <li>
-        Event: <%= link_to event.name, event_path(event) %> |
-        <%= event.description %>,
-        REQUIREMENTS: <%= event.requirements %> ,
-        Commitment: <%= event.commitment_type %> ,
-        Date: <%= event.date %> ,
-        Starts: <%= event.time_start.strftime("%r") %> ,
-        Ends: <%= event.time_end.strftime("%r") %> ,
-        Address: <%= event.address %>, <%= event.city %>, <%= event.state %>
-        # of spots: <%= event.spots %>
-
+        <h3 class="name"><%= link_to event.name, event_path(event) %> | Hosted by: <%= link_to event.organization.name, organization_path(event.organization) %></h3>
+    <p class="description"><%= event.description %></p>
+    <p class="commitment">Commitment: <strong><%= event.commitment_type %></strong></p>
+    <p>When: <span class="date"><%= event.date.strftime("%a, %b %e, %Y ") %></span> from <span class="time"><%= event.time_start.strftime("%l:%M %P") %></span>  to <%= event.time_end.strftime("%l:%M %P") %></p>
+    <p>Where: <%= event.city %>, <span class="state"><%= event.state %></span></p>
+    <p>SPOTS: <%= event.spots %></p>
       </li>
       <% end %>
   </ul>
