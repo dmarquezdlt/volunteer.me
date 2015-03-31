@@ -9,67 +9,69 @@
        <h3>Volunteer Opportunity:</h3>
        <ul class="list-group">
         <%= @event.name %></ul>
-       <h3>Details:</h3>
-       <ul class="list-group"><%= @event.description %></ul>
-       <h3>Skills needed:</h3>
-       <ul class="list-group"><%= @event.requirements %></ul>
-       <h3>Commitment Level:</h3>
-       <ul class="list-group"><%= @event.commitment_type %></ul>
-       <h3>Date:</h3>
-       <ul class="list-group"><%= @event.date.strftime('%m/%d/%Y') %></ul>
-       <h3>From:</h3>
-       <ul class="list-group"><%= @event.time_start.strftime('%r') %> - <%= @event.time_end.strftime('%r') %></ul>
-       <h3>Address:</h3>
-       <ul class="list-group"><%= @event.address %>, <%= @event.city %>, <%= @event.state %>, <%= @event.country %></ul>
+        <h3>Details:</h3>
+        <ul class="list-group"><%= @event.description %></ul>
+        <h3>Skills needed:</h3>
+        <ul class="list-group"><%= @event.requirements %></ul>
+        <h3>Commitment Level:</h3>
+        <ul class="list-group"><%= @event.commitment_type %></ul>
+        <h3>Date:</h3>
+        <ul class="list-group"><%= @event.date.strftime('%m/%d/%Y') %></ul>
+        <h3>From:</h3>
+        <ul class="list-group"><%= @event.time_start.strftime('%r') %> - <%= @event.time_end.strftime('%r') %></ul>
+        <h3>Address:</h3>
+        <ul class="list-group"><%= @event.address %>, <%= @event.city %>, <%= @event.state %>, <%= @event.country %></ul>
 
-      <h4>Committed Volunteers:</h4>
-       <ul class="list-group"><span class="italic">Volunteer spots left:</span> <%= @event.spots - commited_volunteers || 0 %></ul>
-          <% @event.volunteers.each do |volunteer| %>
+        <h4>Committed Volunteers:</h4>
+        <ul class="list-group"><span class="italic">Volunteer spots left:</span> <%= @event.spots - commited_volunteers || 0 %></ul>
+        <% @event.volunteers.each do |volunteer| %>
 
-           <%= link_to volunteer.name, volunteer_path(volunteer) %>
+        <%= link_to volunteer.name, volunteer_path(volunteer) %>
 
-          <% end %>
+        <% end %>
 
-     </div>
+      </div>
 
-    <div class="col-sm-4">
-    <div class="event_name"><h1><%= @event.organization.name %></h1></div>
-        <img src="http://www.techmerry.com/wp-content/uploads/2014/08/Implement-GPS-data-for-your-Google-MAP.gif">
+      <div class="col-sm-4">
+        <div class="event_name"><h1><%= @event.organization.name %></h1></div>
+        <% if volunteer_signed_in? %>
+        <% unless current_volunteer.events.include?(@event) %>
+        <p class="buttons"><%= link_to 'volunteer', new_volunteer_volunteer_event_path(current_volunteer, event: @event, commited: true), class: "btn btn-success btn-lg" %>       <%= link_to 'bookmark', new_volunteer_volunteer_event_path(current_volunteer, event: @event, commited: false), class: "btn btn-success btn-lg" %></p>
+        <% end %>
+        <% end %>
+        <div class="map_img">
+        <img class="map" src="http://www.techmerry.com/wp-content/uploads/2014/08/Implement-GPS-data-for-your-Google-MAP.gif"></div>
+  
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+    
+      <div><%= render_shareable :buttons=> ['twitter'] %></div>
+      <div class="spaceing"><div class="fb-share-button" href="#{@event.id}" data-layout="button_count"></div></div>
+    
+
 
     </div>
-  </div>
-
-  </div>
-
-  <div class="social_media">
-      <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-
-    <%= render_shareable :buttons=> ['twitter', 'linkedin'] %>
-
-    <div class="fb-share-button" href="#{@event.id}" data-layout="icon_link"></div>
 
     </div>
+
+  </div>
+
+
 </div>
 
-  <div>
+<div>
   <% if organization_signed_in? && current_organization.id == @org.id %>
-    <%= link_to 'Edit Event', edit_organization_event_path(@org, @event) %>
-    <%= link_to 'Delete Event', organization_event_path(@org, @event), method: :delete %>
-      <% end %>
-    </div>
-
-
-  <% if volunteer_signed_in? %>
-  <% unless current_volunteer.events.include?(@event) %>
-   <%= link_to 'volunteer', new_volunteer_volunteer_event_path(current_volunteer, event: @event, commited: true) %> |
-   <%= link_to 'bookmark', new_volunteer_volunteer_event_path(current_volunteer, event: @event, commited: false) %>
-   <% end %>
+  <%= link_to 'Edit Event', edit_organization_event_path(@org, @event) %>
+  <%= link_to 'Delete Event', organization_event_path(@org, @event), method: :delete %>
   <% end %>
+</div>
+
+
+
 
