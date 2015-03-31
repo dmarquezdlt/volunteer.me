@@ -7,5 +7,24 @@ module ApplicationHelper
   def state_array
     return ["", "AK", "AL", "AR", "AS", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "GU", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VI", "VT", "WA", "WI", "WV", "WY"]
   end
+
+  @heroes = [
+	"http://i1250.photobucket.com/albums/hh528/1goodheartedgirl/Wonder%20Woman%20spng/Wonderwoman-female-wonder-woman-superhero-smiley-emoticon-000249-large_zps57d43454.gif",
+	"http://theflowcentre.com/wp-content/uploads/2014/03/superman.jpg",
+	"http://www.how-to-draw-funny-cartoons.com/images/cartoon-superhero.gif",
+	"http://i50.tinypic.com/2nv9sur.jpg",
+	"http://1.bp.blogspot.com/-czhCMKvYdeI/T8ZuZbyYoRI/AAAAAAAAALU/HpUGvGlpv0w/s1600/superhero.jpg",
+	"http://fc09.deviantart.net/fs70/i/2012/335/f/7/batman_cartoon_by_scootah91-d5mpvah.jpg"
+]
+	def avatar_pictures 
+		return [
+	"http://i1250.photobucket.com/albums/hh528/1goodheartedgirl/Wonder%20Woman%20spng/Wonderwoman-female-wonder-woman-superhero-smiley-emoticon-000249-large_zps57d43454.gif",
+	"http://theflowcentre.com/wp-content/uploads/2014/03/superman.jpg",
+	"http://www.how-to-draw-funny-cartoons.com/images/cartoon-superhero.gif",
+	"http://i50.tinypic.com/2nv9sur.jpg",
+	"http://1.bp.blogspot.com/-czhCMKvYdeI/T8ZuZbyYoRI/AAAAAAAAALU/HpUGvGlpv0w/s1600/superhero.jpg",
+	"http://fc09.deviantart.net/fs70/i/2012/335/f/7/batman_cartoon_by_scootah91-d5mpvah.jpg"
+].sample
+	end
 end
 

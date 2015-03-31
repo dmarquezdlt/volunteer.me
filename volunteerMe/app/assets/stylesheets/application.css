@@ -15,10 +15,10 @@
  */
 
 .jumbotron {
- background-image: url("http://www.trailofants.com/wp-content/uploads/2010/05/564570276_65929f5968.jpg");
- background-repeat:repeat-x;
+ background-image: url("http://snohomishfoodbank.org/wp-content/uploads/2015/03/Volunteer-Hands.jpg");
+/* background-repeat:repeat-x;*/
  text-align: center;
- background-size: 50%;
+ background-size: 70%;
  margin-top: 20px;
 }
 
