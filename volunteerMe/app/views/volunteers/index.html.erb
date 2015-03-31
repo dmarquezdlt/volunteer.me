@@ -2,8 +2,8 @@
 
   <div class="jumbotron">
     <div class="title_box">
-      <h1>Volunteer.me</h1>
-      <p>Volunteering made easy.</p>
+      <h2>Volunteer.me</h2>
+      <h3>Volunteering made easy.</h3>
     </div>
 
     <p><%= link_to 'Explore', events_path, class: "btn btn-success btn-lg" %></p>
@@ -24,7 +24,7 @@
       <% end %>
    </div>
 
-  <center><h2>Something Near You...</h2></center>
+ <div class="near_you"><h2>Something Near You...</h2></div>
 
     <% @events.order(:date).order(:time_start).reverse_order.limit(3).each do |event| %>
      <div class="table">
