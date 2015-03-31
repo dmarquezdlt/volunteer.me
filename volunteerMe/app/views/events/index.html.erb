@@ -1,4 +1,17 @@
-SEARCH BAR HERE
+<div class="search_bar">
+      <%= bootstrap_form_for :search, layout: :inline, label_col: "col-sm-2", control_col: "col-sm-10", url: searches_path, method: :post do |f| %>
+
+        <%= f.date_field :date %>
+
+        <%= f.time_field :time_start %>
+
+        <%= f.select(:commitment_type, commitment_array) %>
+
+        <%= f.select(:state, state_array) %>
+
+        <%= f.submit "Search", class: "btn btn-large btn-success"%>
+      <% end %>
+   </div>
 
 <% @events.each do |event| %>
 <ul>
