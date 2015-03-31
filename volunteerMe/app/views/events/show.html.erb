@@ -15,11 +15,6 @@
 <div class="fb-share-button" href="#{@event.id}" data-layout="icon_link"></div>
 
 
-<% if volunteer_signed_in? %>
- <%= link_to 'volunteer', new_volunteer_volunteer_event_path(current_volunteer, event: @event, commited: true) %> |
- <%= link_to 'bookmark', new_volunteer_volunteer_event_path(current_volunteer, event: @event, commited: false) %>
-<% end %>
-
 
 
 
