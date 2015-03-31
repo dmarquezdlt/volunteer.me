@@ -16,6 +16,7 @@
 //= require list
 //= require_tree .
 
+
 $(document).ready(function(){
   var options = {
   valueNames: ['name', 'description', 'time', 'date', 'state', 'commitment']

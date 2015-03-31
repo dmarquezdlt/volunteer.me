@@ -167,6 +167,7 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
   border-radius: 15px;
 }
 
+
 #footer{
   padding-bottom: 30px;
 }
@@ -199,3 +200,10 @@ ul li{
 .results img{
   padding-top: 40px;
 }
+
+/* For gmaps */
+.map-load-div {
+  width: 700px;
+  height: 400px;
+}
+
