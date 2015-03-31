@@ -39,7 +39,7 @@
        <div class="navbar-form navbar-left" role="search">
         <div class="form-group">
           <%= form_for :search, url: searches_path, method: :post do |f| %>
-            <%= f.text_field :entry %>
+            <%= f.text_field :entry, placeholder: "search volunteer opportunties...", size: 30 %>
             <%= f.submit "Search", class: "btn btn-large btn-default" %>
           <% end %>
         </div>
