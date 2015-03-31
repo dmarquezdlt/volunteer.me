@@ -120,3 +120,9 @@ span.italic{
 .thumbnail{
   border-radius: 15px;
 }
+
+/* For gmaps */
+.map-load-div {
+  width: 700px;
+  height: 400px;
+}
