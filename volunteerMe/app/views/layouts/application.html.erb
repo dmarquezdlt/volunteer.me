@@ -64,11 +64,11 @@
 
         <% if volunteer_signed_in? %>
             <li><%= link_to('Search', events_path) %></li>
-            <li><%= link_to('Home', volunteer_path(current_volunteer)) %></li>
+            <li><%= link_to('Profile', volunteer_path(current_volunteer)) %></li>
             <li><%= link_to('Logout', destroy_volunteer_session_path) %></li>
         <% elsif organization_signed_in? %>
             <li><%= link_to('Logout', destroy_organization_session_path) %></li>
-            <li><%= link_to('Home', organization_path(current_organization)) %></li>
+            <li><%= link_to('Profile', organization_path(current_organization)) %></li>
         <% end %>
 
         <% unless volunteer_signed_in? || organization_signed_in? %>

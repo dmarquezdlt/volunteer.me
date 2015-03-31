@@ -1,4 +1,7 @@
+<% unless @search.entry == nil%>
 <h2>You searched "<%= @search.entry %>"...</h2>
+<% end %>
+
 
 <%@matches.each do |match| %>
   <% if  match.searchable_type == "Event" %>
