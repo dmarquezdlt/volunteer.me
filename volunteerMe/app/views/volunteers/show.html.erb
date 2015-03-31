@@ -54,7 +54,7 @@
             <p><strong>Bookmark Events: <small>visible only to you </small> </strong> here are your events </p>
             <% if @volunteer.volunteer_events  %>
               <% @volunteer.volunteer_events.where(commited?:false).each do |e| %>
-                 <%= link_to e.event.name, event_path(e)%>
+                 <%= link_to e.event.name, event_path(e.event)%>
               <% end %>
             <% else %>
               <p>You have not bookmarked events yet. <%=link_to 'Search', events_path %> for some now!</p>
