@@ -2,7 +2,9 @@
 <h2>You searched "<%= @search.entry %>"...</h2>
 <% end %>
 
-
+<% if @matches.empty? %>
+<p>No volunteer opportunities match your search. <%= link_to "Try again", root_path  %></p>
+<% end  %>
 <%@matches.each do |match| %>
   <% if  match.searchable_type == "Event" %>
     <ul>
@@ -10,9 +12,9 @@
       <li>DESCRIPTION: <%= match.searchable.description %></li>
       <li>REQUIREMENTS: <%= match.searchable.requirements %></li>
       <li>COMMITMENT TYPE: <%= match.searchable.commitment_type %></li>
-      <li>DATE: <%= match.searchable.date %></li>
-      <li>STARTS: <%= match.searchable.time_start %></li>
-      <li>ENDS: <%= match.searchable.time_end %></li>
+      <li>DATE: <%= match.searchable.date.strftime("%b %e, %Y - %a") %></li>
+      <li>STARTS: <%= match.searchable.time_start.strftime("%l:%M %P") %></li>
+      <li>ENDS: <%= match.searchable.time_end.strftime("%l:%M %P") %></li>
       <li>ADDRESS: <%= match.searchable.address %></li>
       <li>CITY: <%= match.searchable.city %></li>
       <li>STATE: <%= match.searchable.state %></li>
