@@ -20,7 +20,7 @@
 <body>
 
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -40,7 +40,7 @@
         <div class="form-group">
           <%= form_for :search, url: searches_path, method: :post do |f| %>
             <%= f.text_field :entry %>
-            <%= f.submit "Search", class: "btn btn-large btn-default" %>
+            <%= f.submit "Search", class: "btn btn-large btn-primary" %>
           <% end %>
         </div>
        </div>
