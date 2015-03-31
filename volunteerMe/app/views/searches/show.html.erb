@@ -4,7 +4,7 @@
 
 <% if @matches.empty? %>
 <p>No volunteer opportunities match your search. <%= link_to "Try again", root_path  %></p>
-<% end  %>
+<% else  %>
 <div id="matches-list">
   <input class="search" placeholder="Search" />
     <button class="sort" data-sort="state">
@@ -43,3 +43,4 @@
   </div>
 
   <%= will_paginate @matches %>
+<% end %>
