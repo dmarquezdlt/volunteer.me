@@ -1,11 +1,11 @@
 <%= form_for :event, url:  organization_events_path do |f| %>
 <p>
   <%= f.label :name %><br>
-  <%= f.text_field :name %>
+  <%= f.text_field :name, required:true %>
 </p>
 <p>
   <%= f.label :description %><br>
-  <%= f.text_area :description, :size=>"50x10"%>
+  <%= f.text_area :description, required:true, :size=>"50x10"%>
 </p>
 <p>
   <%= f.label :requirements %><br>
@@ -13,31 +13,31 @@
 </p>
 <p>
   <%= f.label :commitment_type %><br>
-  <%= f.select :commitment_type, commitment_array %>
+  <%= f.select :commitment_type, commitment_array, required:true %>
 </p>
 <p>
   <%= f.label :date %><br>
-  <%= f.date_select :date %>
+  <%= f.date_select :date, required:true%>
 </p>
 <p>
   <%= f.label :time_start %><br>
-  <%= f.time_select :time_start, {:ampm=> true}%>
+  <%= f.time_select :time_start, {:ampm=> true}, required:true%>
 </p>
 <p>
   <%= f.label :time_end %><br>
-  <%= f.time_select :time_end, {:ampm=> true}%>
+  <%= f.time_select :time_end, {:ampm=> true}, required:true%>
 </p>
 <p>
   <%= f.label :address %><br>
-  <%= f.text_field :address %>
+  <%= f.text_field :address, required:true%>
 </p>
 <p>
   <%= f.label :city %><br>
-  <%= f.text_field :city %>
+  <%= f.text_field :city, required:true %>
 </p>
 <p>
   <%= f.label :state %><br>
-  <%= f.select :state, state_array %>
+  <%= f.select :state, state_array, required:true %>
 </p>
 <p>
   <%= f.label :country %><br>
@@ -45,7 +45,7 @@
 </p>
 <p>
   <%= f.label :spots %><br>
-  <%= f.text_field :spots %>
+  <%= f.number_field :spots, required:true %>
 </p>
 <p>
 <%= f.submit %>

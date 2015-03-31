@@ -33,7 +33,7 @@
   <ul>
     <% @org.events.each do |event| %>
       <li>
-        Event: <%= link_to event.name, organization_event_path(@org, event) %> |
+        Event: <%= link_to event.name, event_path(event) %> |
         <%= event.description %>,
         REQUIREMENTS: <%= event.requirements %> ,
         Commitment: <%= event.commitment_type %> ,
