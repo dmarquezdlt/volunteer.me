@@ -38,7 +38,7 @@ class VolunteersController < ApplicationController
 
   private
     def volunteer_params
-      params.require(:volunteer).permit(:name, :email)
+      params.require(:volunteer).permit(:name, :email, :avatar)
     end
 
     def superpower_params
