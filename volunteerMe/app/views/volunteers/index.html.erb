@@ -15,9 +15,9 @@
       <% end %>
    </div>
 
-   <div class="near_you"><h2>Something Near You...</h2></div>
+   <div class="near_you"><h2>Upcoming Opportunities</h2></div>
 
-    <% @events.order(:date).order(:time_start).reverse_order.limit(3).each do |event| %>
+    <% @events.order(:date).limit(3).each do |event| %>
      <div class="table">
         <div class="col-xs-6 col-md-4">
           <div class="thumbnail">
