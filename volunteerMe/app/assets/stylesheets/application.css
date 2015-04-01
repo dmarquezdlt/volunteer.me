@@ -223,6 +223,14 @@ ul li{
     display: none;
 }
 
+.volunteer-prof {
+  padding-top: 3%;
+}
+
+tr {
+  text-align: right;
+}
+
 /* Modal box or Popup box */
 .popupContainer{
   position:absolute;
