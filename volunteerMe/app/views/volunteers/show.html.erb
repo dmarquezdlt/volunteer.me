@@ -1,5 +1,12 @@
 <div class="container" style="padding-top: 60px;">
   <h1 class="page-header">Profile</h1>
+  <% if current_volunteer == @volunteer %>
+  <div class="alert alert-info alert-dismissable">
+    <a class="panel-close close" data-dismiss="alert">×</a>
+    <i class="fa fa-coffee"></i>
+    Welcome to your profile.
+  </div>
+  <% end %>
 
   <div class="row">
     <!-- left column -->
@@ -12,80 +19,76 @@
     </div>
     <!-- edit form column -->
     <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
-    <% if current_volunteer == @volunteer %>
-        <div class="alert alert-info alert-dismissable">
-          <a class="panel-close close" data-dismiss="alert">×</a>
-          <i class="fa fa-coffee"></i>
-          Welcome to your profile.
-        </div>
+
+
+
+     <h2><%= @volunteer.name %></h2>
+     <p><strong>Email: </strong> <%=@volunteer.email %> </p>
+     <div>
+     <div class="volunteer-prof"><strong>SuperPowers: </strong></div>
+     <table>
+     <% @volunteer.superpowers.each do |power| %>
+     <tr>
+       <td><h3><span class="label label-info tags"> <%= power.name %> </span></h3></td>
+       <td><% if can? :update, power %>
+       <small><%= link_to edit_volunteer_superpower_path(power, :volunteer_id=>@volunteer.id), class: "btn btn-sm" do%> <span class="glyphicon glyphicon-edit"></span> <% end %></small>
+       <% end %></td>
+       <% if can? :destroy, power %>
+       <td><small><%= link_to volunteer_superpower_path(power, :volunteer_id=>@volunteer.id),
+       method: :delete,
+       data: {confirm: 'Are you sure'}, class: "btn btn-sm" do%> <span class="glyphicon glyphicon-trash"></span> <% end %> </small></td>
+       <% end %>
+     </tr>
+     <% end %>
+   </table>
+ </div>
+
+     <div class="volunteer-prof"><p><strong>Committed Events: </strong></p></div>
+     <% if @volunteer.volunteer_events  %>
+     <% @volunteer.volunteer_events.where(commited?:true).each do |e| %>
+     <div>
+       <%= link_to e.event.name, event_path(e.event) %>
+     </div>
+     <% end %>
+     <% else %>
+     <p>You have not commited to any volunteering events yet. <%=link_to 'Search', events_path %> for some now!</p>
+     <% end %>
+
+     <% if volunteer_signed_in? %>
+     <% if current_volunteer.id == @volunteer.id %>
+     <div class="volunteer-prof"><p><strong>Bookmark Events:</strong> <small>visible only to you </small>  </p></div>
+     <% if @volunteer.volunteer_events  %>
+     <% @volunteer.volunteer_events.where(commited?:false).each do |e| %>
+     <%= link_to e.event.name, event_path(e.event)%>
+     <% end %>
+     <% else %>
+     <div><p>You have not bookmarked events yet. <%=link_to 'Search', events_path %> for some now!</p></div>
+     <% end %>
+     <% end %>
+     <% end %>
+
+     <% if volunteer_signed_in?%>
+     <% if current_volunteer.id == @volunteer.id %>
+     <div><%= link_to 'Edit Profile', edit_volunteer_path(@volunteer) %></div>
+     <div><%= link_to 'Delete Profile', volunteer_path(@volunteer), method: :delete %></div>
+     <% end %>
+     <% end %>
+
+
+     <% if volunteer_signed_in? %>
+     <% if current_volunteer.id == @volunteer.id %>
+     <%= form_for([@volunteer, @volunteer.superpowers.build]) do |f| %>
+     <p>
+      <div><%= f.label :Superpower %> <small>What skills can you help with?</small></div><br>
+      <%= f.text_field :name, class: "form-control", placeholder: "Ruby on Rails? Woodworking? Flying?" %>
+    </p>
+
+    <p>
+      <%= f.submit "New Superpower", class: "btn btn-large btn-primary" %>
+    </p>
     <% end %>
-      <h3>Personal info</h3>
+    <% end %>
+    <% end %>
 
-
-   <h2><%= @volunteer.name %></h2>
-        <p><strong>Email: </strong> <%=@volunteer.name %> </p>
-
-        <p><strong>SuperPowers: </strong>
-          <% @volunteer.superpowers.each do |power| %>
-          <ul>
-           <span class="label label-info tags"> <%= power.name %> </span>
-            <% if can? :update, power %>
-            <%= link_to 'Edit', edit_volunteer_superpower_path(power, :volunteer_id=>@volunteer.id) %>
-            <% end %>
-            <% if can? :destroy, power %>
-            <%= link_to 'Destroy', volunteer_superpower_path(power, :volunteer_id=>@volunteer.id),
-              method: :delete,
-              data: {confirm: 'Are you sure'} %></p>
-            <% end %>
-          </ul>
-          <% end %>
-
-          <p><strong>Committed Events: </strong> here are your events </p>
-          <% if @volunteer.volunteer_events  %>
-            <% @volunteer.volunteer_events.where(commited?:true).each do |e| %>
-              <div>
-               <%= link_to e.event.name, event_path(e.event) %>
-              </div>
-            <% end %>
-          <% else %>
-            <p>You have not commited to any volunteering events yet. <%=link_to 'Search', events_path %> for some now!</p>
-          <% end %>
-
-        <% if volunteer_signed_in? %>
-          <% if current_volunteer.id == @volunteer.id %>
-            <p><strong>Bookmark Events: <small>visible only to you </small> </strong> here are your events </p>
-            <% if @volunteer.volunteer_events  %>
-              <% @volunteer.volunteer_events.where(commited?:false).each do |e| %>
-                 <%= link_to e.event.name, event_path(e.event)%>
-              <% end %>
-            <% else %>
-              <p>You have not bookmarked events yet. <%=link_to 'Search', events_path %> for some now!</p>
-            <% end %>
-          <% end %>
-        <% end %>
-
-        <% if volunteer_signed_in?%>
-          <% if current_volunteer.id == @volunteer.id %>
-            <%= link_to 'Edit Profile', edit_volunteer_path(@volunteer) %>
-            <%= link_to 'Delete Profile', volunteer_path(@volunteer), method: :delete %>
-          <% end %>
-        <% end %>
-
-
-        <% if volunteer_signed_in? %>
-          <% if current_volunteer.id == @volunteer.id %>
-            <h6 id = "results">New Superpower:</h6>
-            <%= form_for([@volunteer, @volunteer.superpowers.build]) do |f| %>
-              <p>
-                <%= f.label :Superpower %><br>
-                <%= f.text_field :name, class: "form-control" %>
-              </p>
-
-              <p>
-                <%= f.submit "New Superpower", class: "btn btn-large btn-primary" %>
-              </p>
-            <% end %>
-          <% end %>
-        <% end %>
-
-          </div>
+</div>
+  </div>
