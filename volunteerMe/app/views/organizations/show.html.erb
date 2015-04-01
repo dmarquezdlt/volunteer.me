@@ -21,13 +21,12 @@
 <p> <%= @org.name %> </p>
 <p> Category: <%= @org.category %> </p>
 <p> Bio: <%= @org.bio %> </p>
-<p> Phone: <%= @org.phone %> </p>
 <p> <a href="<%= @org.website %>">Visit Website </a> </p>
 <p> Address <%= @org.address %>, <%= @org.city %>, <%= @org.state %> </p>
 </div>
 
 
-<h3>Upcoming Events</h3>
+<h3>Opportunities</h3>
 
 <div>
   <ul>
@@ -36,7 +35,12 @@
         <h3 class="name"><%= link_to event.name, event_path(event) %> | Hosted by: <%= link_to event.organization.name, organization_path(event.organization) %></h3>
     <p class="description"><%= event.description %></p>
     <p class="commitment">Commitment: <strong><%= event.commitment_type %></strong></p>
+    <% if event.commitment_type == "pro-bono" || event.commitment_type == "mentorhship" || event.commitment_type == "other" %>
+    <p> Ongoing </p>
+    <% else %>
     <p>When: <span class="date"><%= event.date.strftime("%a, %b %e, %Y ") %></span> from <span class="time"><%= event.time_start.strftime("%l:%M %P") %></span>  to <%= event.time_end.strftime("%l:%M %P") %></p>
+    <% end %>
+
     <p>Where: <%= event.city %>, <span class="state"><%= event.state %></span></p>
     <p>SPOTS: <%= event.spots %></p>
       </li>

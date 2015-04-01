@@ -34,6 +34,10 @@
   font-weight: thin;
 }
 
+div.thumbnail {
+  height: 30%;
+}
+
 .title_box{
   background-color: rgba(0,0,0,0.4);
   margin-left: 270px;

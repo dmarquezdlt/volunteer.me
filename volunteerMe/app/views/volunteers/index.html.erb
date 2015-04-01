@@ -28,9 +28,11 @@
 
               <h4><%= event.organization.name %></h4>
 
-              <h5><%= event.time_start.strftime("%l:%M %P") %></h5>
-
-              <h5><%= event.date.strftime("%a, %b %e, %Y ") %></h5>
+              <% if event.commitment_type == "pro-bono" || event.commitment_type == "mentorhship" || event.commitment_type == "other" || event.commitment_type == "flexible" %>
+              <h5>Ongoing</h5>
+              <% else %>
+              <h5><%= event.time_start.strftime("%l:%M %P") %> | <%= event.date.strftime("%a, %b %e, %Y ") %></h5>
+              <% end %>
 
             <p><a href=<%= event_path(event) %> class="btn btn-default" role="button">Details</a></p>
             </div>
