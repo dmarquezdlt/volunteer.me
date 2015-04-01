@@ -1,5 +1,6 @@
 class VolunteersController < ApplicationController
 
+
   def index
     # @volunteer = Volunteer.find(params[:id])
     @events = Event.all
@@ -20,13 +21,21 @@ class VolunteersController < ApplicationController
 
   def update
     @volunteer = Volunteer.find(params[:id])
-    # authorize! :edit, @volunteer
-
+    p"---------------------------------------"
+     if params[:image_id].present?
+      p "were here"
+       preloaded = Cloudinary::PreloadedFile.new(params[:image_id])
+       raise "Invalid upload signature" if !preloaded.valid?
+       @volunteer.image_id = preloaded.identifier
+     end
+    p params
       if @volunteer.update(volunteer_params)
         redirect_to @volunteer
       else
         render 'edit'
       end
+
+
   end
 
   def destroy
@@ -38,12 +47,17 @@ class VolunteersController < ApplicationController
 
   private
     def volunteer_params
-      params.require(:volunteer).permit(:name, :email)
+      params.require(:volunteer).permit(:name, :email, :image_id)
+      # Cloudinary::Uploader.upload(File.open(''))
+      # Cloudinary::Uploader.upload(params[:avatar.to_s])
     end
 
     def superpower_params
       params.require(:superpower).permit(:name)
     end
 
+    # def avatar_params
+    #   Cloudinary::Uploader.upload(params[:volunteer][:avatar])
+    # end
 
 end

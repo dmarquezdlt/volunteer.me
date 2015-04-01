@@ -1,0 +1,9 @@
+development:
+  cloud_name: "dusobuzbg"
+  api_key: "429474224244687"
+  api_secret: "sbpYDFMv6VBELY9bK9pL5-4iz4w"
+
+production:
+  cloud_name: "dusobuzbg"
+  api_key: "429474224244687"
+  api_secret: "sbpYDFMv6VBELY9bK9pL5-4iz4w"

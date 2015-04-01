@@ -44,7 +44,7 @@ org3 = Organization.create!(
     )
 
 
-  
+
   Event.create!(
     name: "GiveNOLA Day Leadership Team",
     description: "We need a few good volunteers who can do the following tasks: assist with GiveNOLA goals, communication strategies and support activities on GiveNOLA Day-May 5th, 2015.",
@@ -59,7 +59,7 @@ org3 = Organization.create!(
     spots: "50",
     organization_id: org3.id
     )
- 
+
 
   Event.create!(
     name: "Development Committee Chairperson",
@@ -133,7 +133,7 @@ org3 = Organization.create!(
     spots: "6",
     organization_id: org1.id
     )
- 
+
    Event.create!(
     name: "Purple Stride Miami 2015",
     description: "We would love help with event setup, manning booths, packet pickup, passing out waters at stations along the course, event breakdown.",
@@ -148,7 +148,7 @@ org3 = Organization.create!(
     spots: "1",
     organization_id: org2.id
     )
- 
+
 
 org4 = Organization.create!(
     name: "SECU Family House",
@@ -230,7 +230,7 @@ org6 = Organization.create!(
     description: "The American Cancer Society, Relay For Life is seeking volunteers in Pulaski - anyone wanting to make a difference - to organize and recruit fundraising teams, garner community support, coordinate logistics, seek refreshments and prizes, plan entertainment and lend a hand to ensure the success of the 2015 event. Relay For Life is a truly unique experience which unites communities to finish the fight against cancer. Volunteer support is crucial to the event and will help the American Cancer Society create a world with less cancer and more birthdays.",
     requirements: "none",
     commitment_type: "other",
-   
+
     address: "6725 Lyons Street",
     city: "East Syracuse",
     state: "NY",

@@ -28,10 +28,14 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    aws_cf_signer (0.1.3)
     bcrypt (3.1.10)
     bootstrap_form (2.3.0)
     builder (3.2.2)
     cancancan (1.10.1)
+    cloudinary (1.0.84)
+      aws_cf_signer
+      rest-client
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -48,6 +52,8 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    domain_name (0.5.23)
+      unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.4.0)
     faker (1.4.3)
@@ -55,6 +61,8 @@ GEM
     geocoder (1.2.8)
     hike (1.2.3)
     hirb (0.7.3)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
     i18n (0.7.0)
     jbuilder (2.2.12)
       activesupport (>= 3.0.0, < 5)
@@ -70,6 +78,7 @@ GEM
     mime-types (2.4.3)
     minitest (5.5.1)
     multi_json (1.11.0)
+    netrc (0.10.3)
     orm_adapter (0.5.0)
     pg (0.18.1)
     pg_search (0.7.9)
@@ -99,6 +108,10 @@ GEM
       json (~> 1.4)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
+    rest-client (1.8.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     rspec-core (3.2.2)
       rspec-support (~> 3.2.0)
     rspec-expectations (3.2.0)
@@ -154,6 +167,9 @@ GEM
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.6)
     warden (1.2.3)
       rack (>= 1.0)
     will_paginate (3.0.7)
@@ -166,6 +182,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap_form
   cancancan (~> 1.10)
+  cloudinary
   coffee-rails (~> 4.0.0)
   devise
   faker (~> 1.4.3)

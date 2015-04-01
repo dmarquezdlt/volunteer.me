@@ -11,6 +11,9 @@ gem 'pg'
 gem 'listjs-rails'
 gem 'cancancan', '~> 1.10'
 gem 'devise'
+
+gem 'cloudinary'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 # Use sqlite3 as the database for Active Record

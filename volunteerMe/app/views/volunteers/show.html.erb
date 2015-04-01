@@ -19,7 +19,7 @@
         </div>
     <% end %>
       <h3>Personal info</h3>
-
+<%= cl_image_tag(@volunteer.image_id, :crop => :fill, :width => 120, :height => 80) %>
 
    <h2><%= @volunteer.name %></h2>
         <p><strong>Email: </strong> <%=@volunteer.name %> </p>
