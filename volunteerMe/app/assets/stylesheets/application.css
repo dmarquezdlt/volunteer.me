@@ -305,3 +305,15 @@ ul li{
      text-decoration:  none;
      color: #ED6347;
 }
+
+div.profile-image img {
+    height:200px;
+    width:200px;
+    overflow:hidden;
+    border-radius:50%;
+}
+
+div.about {
+  margin: 20px auto;
+  width: 80%;
+}

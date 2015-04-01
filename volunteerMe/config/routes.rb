@@ -15,7 +15,9 @@ Rails.application.routes.draw do
     resources :superpowers
   end
 
-resources :events
+  resources :events
+
+  get 'team' => "team#index"
 
   resources :organizations do
     resources :events

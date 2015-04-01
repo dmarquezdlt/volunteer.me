@@ -97,11 +97,141 @@
 
       <p><%= link_to 'Explore', events_path, class: "btn btn-success btn-lg" %></p>
     </div>
+  <!-- volunteer sign in -->
+<div id="modal_volunteer_sign_in" class="popupContainer" style="display:none;">
+    <header class="popupHeader">
+      <span class="header_title">Volunteer Login</span>
+      <span class="modal_close"><i class="fa fa-times"></i></span>
+    </header>
 
-<%= yield %>
+      <section class="popupBody">
+      <div class="user_login">
+      <%= form_for(:volunteer, url: volunteer_session_path) do |f| %>
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div>
 
+        <div class="field">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Log in" %>
+        </div>
+      <% end %>
+      <a class="forgot_password" href="#">Forgot password?</a>
+      </div>
+      </section>
+  </div>
+  <!-- organization sign in -->
+    <div id="modal_organization_sign_in" class="popupContainer" style="display:none;">
+      <header class="popupHeader">
+        <span class="header_title">Organization Login</span>
+        <span class="modal_close"><i class="fa fa-times"></i></span>
+      </header>
+
+        <section class="popupBody">
+        <div class="user_login">
+        <%= form_for(:organization, url: organization_session_path) do |f| %>
+          <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "off" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Log in" %>
+          </div>
+        <% end %>
+        <a class="forgot_password" href="#">Forgot password?</a>
+        </div>
+        </section>
+    </div>
+
+  <!-- volunteer registration -->
+  <div id="modal_volunteer_registration" class="popupContainer" style="display:none;">
+      <header class="popupHeader">
+        <span class="header_title">Volunteer Registration</span>
+        <span class="modal_close"><i class="fa fa-times"></i></span>
+      </header>
+
+        <section class="popupBody">
+        <div class="user_login">
+        <%= form_for(:volunteer, url: volunteer_registration_path) do |f| %>
+          <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password %>
+            <% if @validatable %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "off" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Sign up" %>
+          </div>
+        <% end %>
+
+        </div>
+        </section>
+    </div>
+
+    <!-- organization registration -->
+
+    <div id="modal_organization_registration" class="popupContainer" style="display:none;">
+        <header class="popupHeader">
+          <span class="header_title">Organization Registration</span>
+          <span class="modal_close"><i class="fa fa-times"></i></span>
+        </header>
+
+          <section class="popupBody">
+          <div class="user_login">
+          <%= form_for(:organization, url: organization_registration_path) do |f| %>
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true %>
+            </div>
+
+            <div class="field">
+              <%= f.label :password %>
+              <% if @validatable %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "off" %>
+            </div>
+
+            <div class="field">
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "off" %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "Sign up" %>
+            </div>
+          <% end %>
+
+          </div>
+          </section>
+      </div>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
+<%= yield %>
+
   </div>
 </body>
 
@@ -112,29 +242,13 @@
       <thead>
         <tr>
           <th><h3>Our Team</h3></th>
-          <th><h3>Contact Us</h3></th>
+          <th><h3>Our Project</h3></th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Ricky</td>
-          <td>Link here</td>
-        </tr>
-        <tr>
-          <td>Hannah</td>
-          <td>Link here</td>
-        </tr>
-        <tr>
-          <td>Diana</td>
-          <td>Link here</td>
-        </tr>
-        <tr>
-          <td>Andres</td>
-          <td>Link here</td>
-        </tr>
-        <tr>
-          <td>Amadou</td>
-          <td>Link here</td>
+          <td><%= link_to 'About', team_path %></td>
+          <td><%= link_to (image_tag "github-logo.png", size: "33x30"), "https://github.com/dmarquezdlt/volunteer.me" %></td>
         </tr>
       </tbody>
     </table>
