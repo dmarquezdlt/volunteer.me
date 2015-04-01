@@ -6,7 +6,10 @@
     <!-- left column -->
     <div class="col-md-4 col-sm-6 col-xs-12">
       <div class="text-center">
-        <img src="https://findinit.files.wordpress.com/2015/03/volunteer_hero.png" class="avatar img-circle img-thumbnail" alt="avatar">
+        <!-- <img src="https://findinit.files.wordpress.com/2015/03/volunteer_hero.png" class="avatar img-circle img-thumbnail" alt="avatar"> -->
+        <%#= image_tag @user.avatar.url %>
+        <%= image_tag @volunteer.avatar.url(:medium) %>
+        <%#= image_tag @user.avatar.url(:thumb) %>
       </div>
 
     </div>
@@ -21,7 +24,7 @@
       <h3>Personal info</h3>
 
 
-        <%= form_for :volunteer, url: volunteer_path(@volunteer), method: :patch do |f| %>
+        <%= form_for :volunteer, url: volunteer_path(@volunteer), method: :patch, :html => { :multipart => true } do |f| %>
 
           <%= f.label :name, class: "col-lg-3 control-label" %>
           <div class="col-lg-9">
@@ -32,6 +35,8 @@
           <div class="col-lg-9">
           <%= f.text_field :email, class: "form-control pul"%><br>
           </div>
+
+          <%= f.file_field :avatar %>
 
           <%= f.submit "Submit", class: "btn btn-large btn-primary pull-right" %>
 
