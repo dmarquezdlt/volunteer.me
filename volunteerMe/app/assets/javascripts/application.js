@@ -18,17 +18,19 @@
 
 
 $(document).ready(function(){
+
+  var PageNumberOptions = {
+    innerWindow: 5,
+    left: 3,
+    right: 3
+  };
+
   var options = {
-  valueNames: ['name', 'description', 'time', 'date', 'state', 'commitment']
-};
+  valueNames: ['name', 'description', 'time', 'date', 'state', 'commitment'],
+  page:  5,
+  plugins: [ ListPagination(PageNumberOptions) ]
+  };
 
   var matchlist = new List('matches-list', options);
-  // $('#filter-state').change(function(){
-  //   var selection = this.value;
-  //   if (selection) {
-  //     matchlist.filter(function(item){
-  //       return (item.values().state == selection);
-  //     });
-  //   }
-  // })
+
 });

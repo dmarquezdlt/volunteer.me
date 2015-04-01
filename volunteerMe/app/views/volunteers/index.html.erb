@@ -34,7 +34,7 @@
               <h5><%= event.time_start.strftime("%l:%M %P") %> | <%= event.date.strftime("%a, %b %e, %Y ") %></h5>
               <% end %>
 
-            <p><a href="#" class="btn btn-default" role="button">Details</a></p>
+            <p><a href=<%= event_path(event) %> class="btn btn-default" role="button">Details</a></p>
             </div>
           </div>
         </div>

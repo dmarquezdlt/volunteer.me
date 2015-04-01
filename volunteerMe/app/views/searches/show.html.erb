@@ -10,30 +10,18 @@
   <div id="matches-list">
     <center>
     <input class="search" placeholder="Search" />
-    <button class="sort" data-sort="state">
-        Sort by State
+      <button class="sort" data-sort="state">
+              Sort by State
       </button>
       <button class="sort" data-sort="date">
-        Sort by Date
+            Sort by Date
       </button>
       <button class="sort" data-sort="time">
-        Sort by Time
+              Sort by Time
       </button>
-      <select name="state" id="filter-state">
-        <option selected="selected">Sort by</option>
-        <option><button class="sort" data-sort="state">
-        Sort by State
-      </button></option>
-        <option><button class="sort" data-sort="date">
-        Sort by Date
-      </button></option>
-        <option><button class="sort" data-sort="commitment">
-        Sort by Commitment Type
-      </button></option>
-        <option><button class="sort" data-sort="time">
-        Sort by Time
-      </button></option>
-      </select>
+      <button class="sort" data-sort="commitment">
+              Sort by Commitment Type
+            </button>
     </center>
 
     <div class="results">
@@ -62,18 +50,25 @@
         </li>
         <% else %>
         <li>
-          <h3>ORGANIZATION NAME: <%= link_to match.searchable.name,  organization_path(match.searchable)%></h3>
-          <p>EMAIL: <%= match.searchable.email %></p>
-          <p>CATEGORY: <%= match.searchable.category %></p>
-          <p>BIO: <%= match.searchable.bio %></p></li>
+          <div class="col-sm-4 event-image">
 
+          <img src="http://2xxuz23rft0449gqis2s2t0l.wpengine.netdna-cdn.com/wp-content/uploads/2013/12/gi-icon-hands-blue.png" height="200px" width="180px">
+          </div>
+
+          <div class="col-sm-8" >
+            <h3 class="name"><%= link_to match.searchable.name,  organization_path(match.searchable)%></h3>
+            <p class="email">Contact: <%= match.searchable.email %></p>
+            <p class="category">Category: <%= match.searchable.category %></p>
+            <p class="bio">Bio: <%= match.searchable.bio %></p>
+          </div></li>
           <% end %>
           <% end %>
         </ul>
+        <ul class="pagination"></ul>
         </div>
   </div>
 
-  <center><%= will_paginate @matches, renderer: BootstrapPagination::Rails %></center>
+  <!-- <center><%#= will_paginate @matches, renderer: BootstrapPagination::Rails %></center> -->
 <% end %>
 
 </div>
