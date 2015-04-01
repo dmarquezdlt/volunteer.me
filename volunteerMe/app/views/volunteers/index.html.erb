@@ -1,5 +1,46 @@
 <div class="container">
 
+  <div id="modal" class="popupContainer" style="display:none;">
+    <header class="popupHeader">
+      <span class="header_title">Login</span>
+      <span class="modal_close"><i class="fa fa-times"></i></span>
+    </header>
+
+      <section class="popupBody">
+      <div class="user_login">
+      <!-- <form action="/user/sign_in" class="new_volunteer" id="new_volunteer" method="post">
+          <label>Email</label> <input type="text" id="volunteer_email" name="volunteer[email]" type="email"><br>
+          <label>Password</label> <input type="password" id="volunteer_password" name="volunteer[password]"><br>
+
+          <div class="action_btns">
+              <div class="one_half last">
+                  <input name="commit" type="submit" value="Log In">
+              </div>
+          </div>
+      </form> -->
+      <%= form_for(:volunteer, url: volunteer_session_path) do |f| %>
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Log in" %>
+        </div>
+      <% end %>
+      <a class="forgot_password" href="#">Forgot password?</a>
+      </div>
+      </section>
+  </div>
+
+
+
+
   <div class="search_bar">
       <%= bootstrap_form_for :search, layout: :inline, label_col: "col-sm-2", control_col: "col-sm-10", url: searches_path, method: :post do |f| %>
 
@@ -14,6 +55,9 @@
         <%= f.submit "Search", class: "btn btn-large btn-success"%>
       <% end %>
    </div>
+
+
+
 
    <div class="near_you"><h2>Upcoming Opportunities</h2></div>
 

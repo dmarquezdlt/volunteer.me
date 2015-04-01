@@ -5,15 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <meta property="og:description" content="Workday, a provider of cloud-based
-applications for human resources, said on Monday that it would seek to price
-its initial public offering at $21 to $24 a share.  At the midpoint of that
-range, the offering would value the company at $3.6 billion. Like many other
-technology start-ups, Workday, founded in 2005, will have a dual-class share
-structure, with each Class B share having 10 votes. Its co-chief executives,
-David Duffield, the founder of PeopleSoft, and Aneel Bhusri, who was chief
-strategist at PeopleSoft, will have 67 percent of the voting rights after
-the I.P.O., according to the prospectus." />
+
    <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
@@ -22,10 +14,14 @@ the I.P.O., according to the prospectus." />
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<link href='http://fonts.googleapis.com/css?family=Playfair+Display|Cinzel+Decorative|Merienda|Leckerli+One' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
-<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
-<script src="http://listjs.com/no-cdn/list.pagination.js"></script>
+  <!-- google fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Playfair+Display|Cinzel+Decorative|Merienda|Leckerli+One' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+  <!-- list.js -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
+  <script src="http://listjs.com/no-cdn/list.pagination.js"></script>
+
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
 </head>
 <body>
   <div class="container">
@@ -62,7 +58,7 @@ the I.P.O., according to the prospectus." />
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Sign in <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="/user/sign_in">As a Volunteer</a></li>
+              <li><a id="modal_trigger" href="#modal" class="btn">As a Volunteer</a></li>
               <li><a href="/org/sign_in">As a Organization</a></li>
             </ul>
           </li>
