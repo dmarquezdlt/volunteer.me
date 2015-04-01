@@ -10,6 +10,15 @@
   <div id="matches-list">
     <center>
     <input class="search" placeholder="Search" />
+    <button class="sort" data-sort="state">
+        Sort by State
+      </button>
+      <button class="sort" data-sort="date">
+        Sort by Date
+      </button>
+      <button class="sort" data-sort="time">
+        Sort by Time
+      </button>
       <select name="state" id="filter-state">
         <option selected="selected">Sort by</option>
         <option><button class="sort" data-sort="state">
@@ -42,7 +51,11 @@
           <h3 class="name"> <%= link_to match.searchable.name,  event_path(match.searchable) %></h3>
           <p class="description"><%= match.searchable.description %></p>
           <p class="commitment">Commitment: <strong><%= match.searchable.commitment_type %></strong></p>
+          <% if match.searchable.commitment_type == "pro-bono" || match.searchable.commitment_type == "mentorhship" || match.searchable.commitment_type == "other" || match.searchable.commitment_type == "flexible" %>
+          <p> Ongoing </p>
+          <% else %>
           <p>When: <span class="date"><%= match.searchable.date.strftime("%a, %b %e, %Y ") %></span> from <span class="time"><%= match.searchable.time_start.strftime("%l:%M %P") %></span>  to <%= match.searchable.time_end.strftime("%l:%M %P") %></p>
+          <% end %>
           <p>Where: <%= match.searchable.city %>, <span class="state"><%= match.searchable.state %></span></p>
           <p>SPOTS: <%= match.searchable.spots %></p>
           </div>

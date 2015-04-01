@@ -16,9 +16,13 @@
         <h3>Commitment Level:</h3>
         <ul class="list-group"><%= @event.commitment_type %></ul>
         <h3>Date:</h3>
+        <% if @event.commitment_type == "pro-bono" || @event.commitment_type == "mentorhship" || @event.commitment_type == "other" || @event.commitment_type == "flexible" %>
+        <ul class="list-group">Ongoing</ul>
+        <% else %>
         <ul class="list-group"><%= @event.date.strftime('%m/%d/%Y') %></ul>
         <h3>From:</h3>
         <ul class="list-group"><%= @event.time_start.strftime('%r') %> - <%= @event.time_end.strftime('%r') %></ul>
+        <% end %>
         <h3>Address:</h3>
         <ul class="list-group"><%= @event.address %>, <%= @event.city %>, <%= @event.state %>, <%= @event.country %></ul>
 
@@ -84,7 +88,7 @@
 </script>
 
 <script type="text/javascript">
-  var event_address = '<%= @event.address + ", " + @event.city +  ", " + @event.state +  ", " + @event.country %>'
+  var event_address = '<%= @event.address + ", " + @event.city +  ", " + @event.state %>'
 
   LoadMAP(event_address)
 </script>
