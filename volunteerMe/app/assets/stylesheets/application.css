@@ -14,11 +14,18 @@
  *= require_self
  */
 
+ /*background-image: url("http://snohomishfoodbank.org/wp-content/uploads/2015/03/Volunteer-Hands.jpg");*/
+
 .jumbotron {
- background-image: url("http://snohomishfoodbank.org/wp-content/uploads/2015/03/Volunteer-Hands.jpg");
+ background-image: url("https://40.media.tumblr.com/694b6035714d5b2bec5a8bea57f2acf4/tumblr_nm5pu6I7af1u2jsm6o1_1280.jpg");
+ background-repeat: no-repeat;
  text-align: center;
- background-size: 65%;
- margin-top: 20px;
+ background-size: 100%;
+ height:375px;
+}
+
+.jumbotron img{
+  margin-top: -300px;
 }
 
 .jumbotron h2{
