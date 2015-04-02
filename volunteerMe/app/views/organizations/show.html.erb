@@ -1,61 +1,71 @@
 
-  <div>
-    <% if organization_signed_in?%>
-      <% if current_organization.id == @org.id %>
+      <% if organization_signed_in?%>
+        <% if current_organization.id == @org.id %>
 
-        <% if  @org.name == nil  %>
-          <div><%= link_to 'Create a Profile', edit_organization_path(@org.id) %> to post your volunteering opportunities.<div>
-        <% else %>
-          <% if organization_signed_in?%>
-            <div>
-              <p>Welcome, <%= @org.name %></p>
-              <%= link_to 'Edit Profile', edit_organization_path(@org.id) %>
-            </div>
+          <% if  @org.name == nil  %>
+            <%= link_to 'Create a Profile', edit_organization_path(@org.id) %> to post your volunteering opportunities.
+          <% end %>
+
+            <% if organization_signed_in?%>
+              <p><%= link_to 'Edit Profile', edit_organization_path(@org.id) %></p>
+              <p><%= link_to 'Create Event', new_organization_event_path(@org.id) %></p>
+              <p><%= link_to 'Delete Account', organization_path(@org.id), method: :delete %></p>
           <% end %>
         <% end %>
-      <% end %>
-     <% end %>
-</div>
+       <% end %>
 
-<div>
-<p> <%= @org.name %> </p>
-<p> Category: <%= @org.category %> </p>
-<p> Bio: <%= @org.bio %> </p>
-<p> <a href="<%= @org.website %>">Visit Website </a> </p>
-<p> Address <%= @org.address %>, <%= @org.city %>, <%= @org.state %> </p>
-</div>
+      <div class="org_name"><%= @org.name %></div>
+
+        <div class="col-md-6">
+          <div class="org_info">
+            <h3> We care about <%= @org.category %></h3>
+            <p> <%= @org.bio %> </p>
+
+          </div>
+        </div>
+
+        <div class="col-md-6 col-sm-4">
+                    <div class="org_info">
+
+          <h3><a href="<%= @org.website %>">Visit Website </a></h3>
+            <p> Address: <%= @org.address%>, <%= @org.city %>,<%= @org.state %> </p>
+          </div>
+        </div>
 
 
-<h3>Opportunities</h3>
+  <div class="col-md-12">
 
-<div>
-  <ul>
-    <% @org.events.each do |event| %>
-      <li>
-        <h3 class="name"><%= link_to event.name, event_path(event) %> | Hosted by: <%= link_to event.organization.name, organization_path(event.organization) %></h3>
-    <p class="description"><%= event.description %></p>
-    <p class="commitment">Commitment: <strong><%= event.commitment_type %></strong></p>
-    <% if event.commitment_type == "pro-bono" || event.commitment_type == "mentorhship" || event.commitment_type == "other" %>
-    <p> Ongoing </p>
+    <div class="org_opp"><h2>Volunteer opportunities hosted by us.</h2></div>
+    <% if @org.events.empty? %>
+    <center><h4>You currently have no events.</h4></center>
+    <center><h4><%= link_to 'Click here to create event', new_organization_event_path(@org.id) %></h4></center>
     <% else %>
-    <p>When: <span class="date"><%= event.date.strftime("%a, %b %e, %Y ") %></span> from <span class="time"><%= event.time_start.strftime("%l:%M %P") %></span>  to <%= event.time_end.strftime("%l:%M %P") %></p>
+    <% @org.events.order(:date).limit(3).each do |event| %>
+     <div class="table">
+        <div class="col-xs-6 col-md-4">
+          <div class="thumbnail">
+            <img src="http://2xxuz23rft0449gqis2s2t0l.wpengine.netdna-cdn.com/wp-content/uploads/2013/12/gi-icon-hands-blue.png" height="500px" width="250px">
+            <div class="caption">
+              <div>
+              <h3><%= event.name %></h3>
+
+              <h4><%= event.organization.name %></h4>
+
+              <% if event.commitment_type == "pro-bono" || event.commitment_type == "mentorhship" || event.commitment_type == "other" || event.commitment_type == "flexible" %>
+              <h5>Ongoing</h5>
+              <% else %>
+              <h5><%= event.time_start.strftime("%l:%M %P") %> | <%= event.date.strftime("%a, %b %e, %Y ") %></h5>
+              <% end %>
+
+            <p><a href=<%= event_path(event) %> class="btn btn-default" role="button">Details</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
     <% end %>
 
-    <p>Where: <%= event.city %>, <span class="state"><%= event.state %></span></p>
-    <p>SPOTS: <%= event.spots %></p>
-      </li>
-      <% end %>
-  </ul>
-
-</div>
-</div>
-<% if organization_signed_in?%>
-  <% if current_organization.id == @org.id %>
-   <p><%= link_to 'Create Event', new_organization_event_path(@org.id) %></p>
-
-    <%= link_to 'Delete Account', organization_path(@org.id), method: :delete %>
-  <% end %>
-<% end %>
-
+  </div>
 
 

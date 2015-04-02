@@ -16,9 +16,8 @@
 
 .jumbotron {
  background-image: url("http://snohomishfoodbank.org/wp-content/uploads/2015/03/Volunteer-Hands.jpg");
-/* background-repeat:repeat-x;*/
  text-align: center;
- background-size: 70%;
+ background-size: 65%;
  margin-top: 20px;
 }
 
@@ -289,7 +288,7 @@ tr {
      color: #666;
 }
 
-.user_login input[type="checkbox"]  {
+  {
     float: left;
      margin-right: 5px;
 }
@@ -325,3 +324,29 @@ div.about {
   margin: 20px auto;
   width: 80%;
 }
+.org_name{
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 50px;
+  padding-top: 50px;
+  border-bottom: 1px grey solid;
+}
+
+.org_info{
+  font-family: 'Lora', serif;
+  padding-top: 50px;
+  width:100%;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.org_opp{
+  padding: 80px;
+  text-align: center;
+  color:black;
+  font-family: "Leckerli One";
+  font-weight: thin;
+}
+
