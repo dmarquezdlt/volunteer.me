@@ -15,7 +15,22 @@
       <% end %>
    </div>
 
-   <div class="near_you"><h2>Upcoming Opportunities</h2></div>
+   <div class="near_you">
+     <h3>Invite Your friends</h3>
+      <%= form_for :volunteer, url:  send_mail_path do |f| %>
+
+        <%= f.label :from %>
+        <%= f.email_field :from, placeholder: "john@gmail.com"  %>
+
+        <%= f.label :to %>
+        <%= f.email_field :to, placeholder: "sarah@gmail.com"  %>
+
+        <%= f.submit "Invite friends", class: "btn btn-success" %>
+      <% end %>
+
+
+      <h2>Upcoming Opportunities</h2>
+   </div>
 
     <% @events.order(:date).limit(3).each do |event| %>
      <div class="table">
@@ -41,5 +56,7 @@
       </div>
     <% end %>
     </div>
+
+
 
 </div>

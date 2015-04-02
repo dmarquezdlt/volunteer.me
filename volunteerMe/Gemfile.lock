@@ -52,6 +52,9 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    dotenv (2.0.0)
+    dotenv-rails (2.0.0)
+      dotenv (= 2.0.0)
     erubis (2.7.0)
     execjs (2.4.0)
     faker (1.4.3)
@@ -59,6 +62,9 @@ GEM
     geocoder (1.2.8)
     hike (1.2.3)
     hirb (0.7.3)
+    httparty (0.13.3)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jbuilder (2.2.12)
       activesupport (>= 3.0.0, < 5)
@@ -77,6 +83,7 @@ GEM
     mime-types (2.4.3)
     minitest (5.5.1)
     multi_json (1.11.0)
+    multi_xml (0.5.5)
     orm_adapter (0.5.0)
     paperclip (4.2.1)
       activemodel (>= 3.0.0)
@@ -180,9 +187,11 @@ DEPENDENCIES
   cancancan (~> 1.10)
   coffee-rails (~> 4.0.0)
   devise
+  dotenv-rails
   faker (~> 1.4.3)
   geocoder
   hirb
+  httparty
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
