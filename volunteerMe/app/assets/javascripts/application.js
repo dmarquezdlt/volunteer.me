@@ -35,6 +35,7 @@ $(document).ready(function(){
   var matchlist = new List('matches-list', options);
 
   $("#volunteer_modal_trigger").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
+  $("#volunteer_modal_trigger2").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
   $("#organization_modal_trigger").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" })
   $("#volunteer_registration_modal_trigger").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
   $("#organization_registration_modal_trigger").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });

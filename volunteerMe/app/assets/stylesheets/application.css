@@ -231,6 +231,20 @@ tr {
   text-align: right;
 }
 
+.spacer {
+  padding-left: 5%;
+  margin-top: 5%;
+}
+
+.event_name h1 a {
+  color: white;
+}
+
+.event_name h1 a:hover {
+  color: lightblue;
+  text-decoration: none;
+}
+
 /* Modal box or Popup box */
 .popupContainer{
   position:absolute;
