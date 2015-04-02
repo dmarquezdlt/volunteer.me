@@ -8,6 +8,33 @@
 
 end
 
+
+
+
+vol1 = Volunteer.create!(
+    name: "Amadou Sallah",
+    email: Faker::Internet.email,
+    password: 'password',
+    )
+vol2 = Volunteer.create!(
+    name: "Andres Macedo",
+    email: Faker::Internet.email,
+    password: 'password',
+    )
+vol3 = Volunteer.create!(
+    name: "Ricky P. Chen",
+    email: Faker::Internet.email,
+    password: 'password',
+    )
+vol4 = Volunteer.create!(
+    name: "Hannah Sison",
+    email: Faker::Internet.email,
+    password: 'password',
+    )
+
+
+
+
   org1 = Organization.create!(
     name: "Digital Nest",
     category: "Education",
@@ -104,7 +131,7 @@ org3 = Organization.create!(
     organization_id: org2.id
     )
 
-  Event.create!(
+  ev1 = Event.create!(
     name: "Web development Workshop",
     description: "Teach high school students the basics of web development for their personal projects. ",
     requirements: "HTML, CSS, Heroku",
@@ -115,7 +142,67 @@ org3 = Organization.create!(
     address: "17 Aspen Way",
     city: "Watsonville",
     state: "CA",
-    spots: "1",
+    spots: "5",
+    organization_id: org1.id
+    )
+
+    Event.create!(
+    name: "Community get Fit",
+    description: "Come help people wiht low access to parks get fit. ",
+    requirements: "HTML, CSS, Heroku",
+    commitment_type: "one-time",
+    date: "2015-04-03",
+    time_start: "4:00 PM",
+    time_end: "5:30 PM",
+    address: "17 Aspen Way",
+    city: "San Francisco",
+    state: "CA",
+    spots: "5",
+    organization_id: org1.id
+    )
+
+   Event.create!(
+    name: "Homeless Feed",
+    description: "Help out at our Friday night soup kitchen shenanigans. ",
+    requirements: "HTML, CSS, Heroku",
+    commitment_type: "one-time",
+    date: "2015-04-03",
+    time_start: "4:00 PM",
+    time_end: "5:30 PM",
+    address: "17 Aspen Way",
+    city: "Schwenksville",
+    state: "PA",
+    spots: "10",
+    organization_id: org1.id
+    )
+
+   Event.create!(
+    name: "Pet Walk",
+    description: "Raise awareness for pet cancer at the part. Help pets get adopteds",
+    requirements: "HTML, CSS, Heroku",
+    commitment_type: "one-time",
+    date: "2015-04-03",
+    time_start: "4:00 PM",
+    time_end: "5:30 PM",
+    address: "105 East Main St",
+    city: "Painesville",
+    state: "OH",
+    spots: "10",
+    organization_id: org1.id
+    )
+
+      Event.create!(
+    name: "Bilingial Math Tutor",
+    description: "Help non-native English speakers with their algebra students ",
+    requirements: "Cantonese",
+    commitment_type: "one-time",
+    date: "2015-04-03",
+    time_start: "4:00 PM",
+    time_end: "5:30 PM",
+    address: "105 Main St",
+    city: "Edgartown",
+    state: "MA",
+    spots: "10",
     organization_id: org1.id
     )
 
@@ -200,8 +287,8 @@ org5 = Organization.create!(
     description: "Three (3) one hour guided trail rides with access to the facility for th eday",
     requirements: "none",
     commitment_type: "one-time",
-    date: "2015-12-05",
-    time_start: "6:00 AM",
+    date: "2015-04-03",
+    time_start: "4:00 PM",
     time_end: "9:00 PM",
      address: "3580 Deal Road",
     city: "Mooresville",
@@ -229,11 +316,39 @@ org6 = Organization.create!(
     name: "Help make a difference in Pulaski!",
     description: "The American Cancer Society, Relay For Life is seeking volunteers in Pulaski - anyone wanting to make a difference - to organize and recruit fundraising teams, garner community support, coordinate logistics, seek refreshments and prizes, plan entertainment and lend a hand to ensure the success of the 2015 event. Relay For Life is a truly unique experience which unites communities to finish the fight against cancer. Volunteer support is crucial to the event and will help the American Cancer Society create a world with less cancer and more birthdays.",
     requirements: "none",
-    commitment_type: "other",
-   
+    commitment_type: "one-time",
+    date: "2015-04-03",
+    time_start: "4:30 PM",
+    time_end: "5:30 PM",
     address: "6725 Lyons Street",
     city: "East Syracuse",
     state: "NY",
     spots: "10",
     organization_id: org6.id
     )
+
+
+VolunteerEvent.create!(
+    volunteer_id: vol1.id,
+    event_id: ev1.id,
+    commited?: true,
+    )
+VolunteerEvent.create!(
+    volunteer_id: vol2.id,
+    event_id: ev1.id,
+    commited?: true,
+    )
+
+VolunteerEvent.create!(
+    volunteer_id: vol3.id,
+    event_id: ev1.id,
+    commited?: true,
+    )
+
+VolunteerEvent.create!(
+    volunteer_id: vol4.id,
+    event_id: ev1.id,
+    commited?: true,
+    )
+
+
