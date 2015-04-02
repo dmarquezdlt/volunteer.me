@@ -49,18 +49,7 @@
           </div>
         </li>
         <% else %>
-        <li>
-          <div class="col-sm-4 event-image">
-
-          <img src="http://2xxuz23rft0449gqis2s2t0l.wpengine.netdna-cdn.com/wp-content/uploads/2013/12/gi-icon-hands-blue.png" height="200px" width="180px">
-          </div>
-
-          <div class="col-sm-8" >
-            <h3 class="name"><%= link_to match.searchable.name,  organization_path(match.searchable)%></h3>
-            <p class="email">Contact: <%= match.searchable.email %></p>
-            <p class="category">Category: <%= match.searchable.category %></p>
-            <p class="bio">Bio: <%= match.searchable.bio %></p>
-          </div></li>
+      
           <% end %>
           <% end %>
         </ul>
