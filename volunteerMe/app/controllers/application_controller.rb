@@ -22,17 +22,17 @@ class ApplicationController < ActionController::Base
     if resource.class == Organization
       organization_path(resource.id)
     elsif resource.class == Volunteer
-      volunteer_path(resource.id)
+      event_path(5)
     end
   end
 
-   def after_sign_in_path_for(resource)
-    if resource.class == Organization
-      organization_path(resource.id)
-    elsif resource.class == Volunteer
-      volunteer_path(resource.id)
-    end
-  end
+  #  def after_sign_in_path_for(resource)
+  #   if resource.class == Organization
+  #     organization_path(resource.id)
+  #   elsif resource.class == Volunteer
+  #    session[:previous_url] = request.fullpath
+  #   end
+  # end
 
 
 end

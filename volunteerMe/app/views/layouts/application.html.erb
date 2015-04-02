@@ -107,7 +107,7 @@
 
       <section class="popupBody">
       <div class="user_login">
-      <%= form_for(:volunteer, url: volunteer_session_path) do |f| %>
+      <%= form_for(:volunteer, url: volunteer_session_path, on_sent_ok: "location = 'http://localhost:3000/events/5';") do |f| %>
         <div class="field">
           <%= f.label :email %><br />
           <%= f.email_field :email, autofocus: true %>
